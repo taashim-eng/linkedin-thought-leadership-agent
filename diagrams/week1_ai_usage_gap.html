@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 1: The AI Usage Gap</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .card { width: 1080px; height: 1080px; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 40px 50px 30px; }
+  .header h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+  .header p { font-size: 18px; color: #94a3b8; }
+  .content { flex: 1; display: flex; padding: 40px 50px; gap: 40px; }
+  .side { flex: 1; border-radius: 16px; padding: 35px; display: flex; flex-direction: column; }
+  .side-left { background: #f1f5f9; border: 2px solid #e2e8f0; }
+  .side-right { background: #eff6ff; border: 2px solid #bfdbfe; }
+  .side-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; padding: 6px 14px; border-radius: 20px; display: inline-block; }
+  .label-grey { background: #94a3b8; color: #fff; }
+  .label-blue { background: #3b82f6; color: #fff; }
+  .side-title { font-size: 26px; font-weight: 700; margin-bottom: 16px; }
+  .side-left .side-title { color: #64748b; }
+  .side-right .side-title { color: #1d4ed8; }
+  .screen { background: #1e293b; border-radius: 10px; padding: 20px; margin: 15px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .side-left .screen { opacity: 0.6; }
+  .chat-line { color: #94a3b8; font-family: 'Consolas', monospace; font-size: 14px; margin: 6px 0; }
+  .chat-line.user { color: #60a5fa; }
+  .chat-line.ai { color: #a7f3d0; }
+  .ide-line { font-family: 'Consolas', monospace; font-size: 13px; margin: 4px 0; }
+  .ide-line.code { color: #60a5fa; }
+  .ide-line.suggestion { color: #34d399; background: rgba(52,211,153,0.1); padding: 2px 6px; border-radius: 4px; }
+  .ide-line.test { color: #fbbf24; }
+  .ide-line.pass { color: #34d399; }
+  .thought { margin-top: 20px; padding: 14px 18px; border-radius: 10px; font-size: 15px; font-style: italic; }
+  .side-left .thought { background: #e2e8f0; color: #64748b; }
+  .side-right .thought { background: #dbeafe; color: #1d4ed8; }
+  .divider { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60px; }
+  .gap-arrow { writing-mode: vertical-lr; font-size: 14px; font-weight: 700; color: #ef4444; text-align: center; letter-spacing: 1px; }
+  .gap-line { width: 3px; flex: 1; background: linear-gradient(to bottom, #ef4444, #f97316); border-radius: 2px; margin: 10px 0; }
+  .footer { background: #1a1a2e; padding: 30px 50px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-question { font-size: 22px; font-weight: 700; color: #fff; }
+  .footer-tag { font-size: 14px; color: #94a3b8; }
+  .percent-badge { display: flex; gap: 20px; }
+  .badge { text-align: center; }
+  .badge .num { font-size: 32px; font-weight: 800; color: #f97316; }
+  .badge .label { font-size: 12px; color: #94a3b8; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>The AI Usage Gap</h1>
+    <p>Most teams have AI. Few teams actually build with it.</p>
+  </div>
+  <div class="content">
+    <div class="side side-left">
+      <span class="side-label label-grey">LEVEL 1</span>
+      <div class="side-title">AI as Search</div>
+      <div class="screen">
+        <div class="chat-line user">&gt; How do I fix this null pointer error?</div>
+        <div class="chat-line ai">A NullPointerException occurs when...</div>
+        <div class="chat-line user">&gt; What's the best way to optimize this query?</div>
+        <div class="chat-line ai">Consider adding an index on...</div>
+        <div class="chat-line user">&gt; How do I write a unit test for this?</div>
+        <div class="chat-line ai">You can use JUnit to create...</div>
+      </div>
+      <div class="thought">"Let me ask AI and then go do it myself"</div>
+    </div>
+    <div class="divider">
+      <div class="gap-line"></div>
+      <div class="gap-arrow">THIS GAP<br/>IS GROWING</div>
+      <div class="gap-line"></div>
+    </div>
+    <div class="side side-right">
+      <span class="side-label label-blue">LEVEL 3</span>
+      <div class="side-title">AI as Dev Partner</div>
+      <div class="screen">
+        <div class="ide-line code">def calculate_revenue(orders):</div>
+        <div class="ide-line suggestion">+ AI: generated 8 test cases</div>
+        <div class="ide-line suggestion">+ AI: edge case found - empty list</div>
+        <div class="ide-line test">Running test suite...</div>
+        <div class="ide-line pass">&#10003; 7/8 passed | 1 fix suggested</div>
+        <div class="ide-line suggestion">+ AI: refactored for performance</div>
+      </div>
+      <div class="thought">"AI builds it, I review and approve"</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div>
+      <div class="footer-question">Which side is your team on?</div>
+      <div class="footer-tag">#AIDevPartner &middot; Week 1 of 6</div>
+    </div>
+    <div class="percent-badge">
+      <div class="badge">
+        <div class="num">70%</div>
+        <div class="label">stuck at<br/>Level 1</div>
+      </div>
+      <div class="badge">
+        <div class="num">5%</div>
+        <div class="label">operating at<br/>Level 3</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

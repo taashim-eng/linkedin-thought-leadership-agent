@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 4: 5 Moves from Chat to IDE</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .card { width: 1080px; height: 1080px; background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
+  .header { padding: 40px 50px 25px; }
+  .header h1 { font-size: 34px; font-weight: 700; }
+  .header p { font-size: 16px; color: #94a3b8; margin-top: 6px; }
+  .moves { flex: 1; padding: 15px 50px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+  .move { display: flex; align-items: stretch; border-radius: 14px; overflow: hidden; }
+  .move-num { width: 80px; display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 800; }
+  .move-1 .move-num { background: #1e40af; color: #93c5fd; }
+  .move-2 .move-num { background: #7c3aed; color: #c4b5fd; }
+  .move-3 .move-num { background: #059669; color: #6ee7b7; }
+  .move-4 .move-num { background: #d97706; color: #fde68a; }
+  .move-5 .move-num { background: #dc2626; color: #fca5a5; }
+  .move-body { flex: 1; padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; }
+  .move-1 .move-body { background: #1e3a5f; }
+  .move-2 .move-body { background: #2e1065; }
+  .move-3 .move-body { background: #064e3b; }
+  .move-4 .move-body { background: #451a03; }
+  .move-5 .move-body { background: #450a0a; }
+  .move-title { font-size: 19px; font-weight: 700; margin-bottom: 4px; }
+  .move-desc { font-size: 14px; color: #cbd5e1; line-height: 1.4; }
+  .move-icon { width: 80px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+  .move-1 .move-icon { background: #1e3a5f; }
+  .move-2 .move-icon { background: #2e1065; }
+  .move-3 .move-icon { background: #064e3b; }
+  .move-4 .move-icon { background: #451a03; }
+  .move-5 .move-icon { background: #450a0a; }
+  .start-banner { margin: 10px 50px 0; padding: 16px 24px; background: linear-gradient(90deg, #059669, #34d399); border-radius: 12px; text-align: center; }
+  .start-banner .big { font-size: 20px; font-weight: 700; color: #fff; }
+  .start-banner .small { font-size: 14px; color: #d1fae5; margin-top: 4px; }
+  .footer { padding: 25px 50px 35px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-insight { font-size: 17px; font-weight: 600; color: #e2e8f0; max-width: 650px; font-style: italic; }
+  .footer-tag { font-size: 14px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>5 Moves: Chat &#10132; IDE</h1>
+    <p>A practical playbook for moving your team from Level 1 to Level 3</p>
+  </div>
+  <div class="moves">
+    <div class="move move-1">
+      <div class="move-num">1</div>
+      <div class="move-body">
+        <div class="move-title">Pick One IDE, Standardize It</div>
+        <div class="move-desc">Choose an IDE with native AI support &mdash; Cursor, VS Code + Copilot, Windsurf. Fragmented tooling kills adoption.</div>
+      </div>
+      <div class="move-icon">&#128421;</div>
+    </div>
+    <div class="move move-2">
+      <div class="move-num">2</div>
+      <div class="move-body">
+        <div class="move-title">Start with Testing, Not Code Gen</div>
+        <div class="move-desc">Code generation is controversial. Testing is the lowest-resistance entry point &mdash; nobody fights you on it.</div>
+      </div>
+      <div class="move-icon">&#9989;</div>
+    </div>
+    <div class="move move-3">
+      <div class="move-num">3</div>
+      <div class="move-body">
+        <div class="move-title">Create a Sandbox &mdash; "The AI Lab"</div>
+        <div class="move-desc">One repo. One sprint. No judgment. Teams that adopted fastest are the ones where failure was expected, not penalized.</div>
+      </div>
+      <div class="move-icon">&#128248;</div>
+    </div>
+    <div class="move move-4">
+      <div class="move-num">4</div>
+      <div class="move-body">
+        <div class="move-title">Measure Before &amp; After</div>
+        <div class="move-desc">Track cycle time, PR review time, defect escape rate, test coverage. Measure at 30 and 60 days. Data kills skepticism.</div>
+      </div>
+      <div class="move-icon">&#128200;</div>
+    </div>
+    <div class="move move-5">
+      <div class="move-num">5</div>
+      <div class="move-body">
+        <div class="move-title">Celebrate the First Win Publicly</div>
+        <div class="move-desc">When someone ships faster or catches a bug they'd have missed &mdash; make it visible. Recognition creates momentum.</div>
+      </div>
+      <div class="move-icon">&#127942;</div>
+    </div>
+  </div>
+  <div class="start-banner">
+    <div class="big">Start with #3. The rest will follow.</div>
+    <div class="small">One sandbox repo, one sprint, no stakes. See what happens.</div>
+  </div>
+  <div class="footer">
+    <div>
+      <div class="footer-insight">"Adoption isn't a technology problem. It's a permission problem."</div>
+      <div class="footer-tag">#AIDevPartner &middot; Week 4 of 6</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

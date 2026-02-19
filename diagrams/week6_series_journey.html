@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 6: The Series Journey</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .card { width: 1080px; height: 1080px; background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #fff; }
+  .header { padding: 40px 50px 20px; text-align: center; }
+  .header h1 { font-size: 34px; font-weight: 700; }
+  .header p { font-size: 16px; color: #94a3b8; margin-top: 6px; }
+  .journey { flex: 1; padding: 20px 40px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .week-row { display: flex; align-items: stretch; border-radius: 14px; overflow: hidden; }
+  .week-num { width: 70px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; }
+  .week-body { flex: 1; padding: 18px 22px; display: flex; align-items: center; gap: 16px; }
+  .week-title { font-size: 17px; font-weight: 700; flex-shrink: 0; width: 240px; }
+  .week-summary { font-size: 14px; color: #cbd5e1; flex: 1; }
+  .week-arc { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+  /* Week colors */
+  .w1 .week-num { background: #dc2626; } .w1 .week-body { background: #450a0a; } .w1 .week-arc { background: #dc2626; color: #fff; }
+  .w2 .week-num { background: #d97706; } .w2 .week-body { background: #451a03; } .w2 .week-arc { background: #d97706; color: #fff; }
+  .w3 .week-num { background: #2563eb; } .w3 .week-body { background: #1e3a5f; } .w3 .week-arc { background: #2563eb; color: #fff; }
+  .w4 .week-num { background: #7c3aed; } .w4 .week-body { background: #2e1065; } .w4 .week-arc { background: #7c3aed; color: #fff; }
+  .w5 .week-num { background: #0891b2; } .w5 .week-body { background: #083344; } .w5 .week-arc { background: #0891b2; color: #fff; }
+  .w6 .week-num { background: #16a34a; } .w6 .week-body { background: #14532d; border: 2px solid #22c55e; } .w6 .week-arc { background: #16a34a; color: #fff; }
+  .progress-bar { margin: 15px 40px 0; height: 8px; border-radius: 4px; background: linear-gradient(90deg, #dc2626, #d97706, #2563eb, #7c3aed, #0891b2, #16a34a); }
+  .cta-box { margin: 20px 40px; padding: 28px 36px; background: linear-gradient(135deg, #16a34a, #059669); border-radius: 16px; text-align: center; }
+  .cta-box .big { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .cta-box .med { font-size: 16px; color: #d1fae5; line-height: 1.5; }
+  .cta-items { display: flex; justify-content: center; gap: 30px; margin-top: 14px; }
+  .cta-item { font-size: 14px; font-weight: 600; color: #fff; padding: 6px 16px; background: rgba(255,255,255,0.15); border-radius: 8px; }
+  .footer { padding: 20px 50px 30px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-quote { font-size: 17px; font-style: italic; color: #94a3b8; max-width: 600px; }
+  .footer-tag { font-size: 14px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>Stop Asking AI Questions. Start Building With It.</h1>
+    <p>6 weeks. One transformation. Here's the journey.</p>
+  </div>
+  <div class="journey">
+    <div class="week-row w1">
+      <div class="week-num">1</div>
+      <div class="week-body">
+        <div class="week-title">"Your Team Is Using AI Wrong"</div>
+        <div class="week-summary">Most teams have reduced AI to expensive autocomplete</div>
+        <span class="week-arc">Hook</span>
+      </div>
+    </div>
+    <div class="week-row w2">
+      <div class="week-num">2</div>
+      <div class="week-body">
+        <div class="week-title">"The AI Maturity Ladder"</div>
+        <div class="week-summary">3 levels: Chat &rarr; Copilot &rarr; Partner. Most stuck at Level 1</div>
+        <span class="week-arc">Framework</span>
+      </div>
+    </div>
+    <div class="week-row w3">
+      <div class="week-num">3</div>
+      <div class="week-body">
+        <div class="week-title">"How AI Fixed Our Testing"</div>
+        <div class="week-summary">AI-embedded testing eliminated the oldest friction in dev</div>
+        <span class="week-arc">Story</span>
+      </div>
+    </div>
+    <div class="week-row w4">
+      <div class="week-num">4</div>
+      <div class="week-body">
+        <div class="week-title">"5 Moves: Chat to IDE"</div>
+        <div class="week-summary">Standardize, start with testing, sandbox, measure, celebrate</div>
+        <span class="week-arc">Tactics</span>
+      </div>
+    </div>
+    <div class="week-row w5">
+      <div class="week-num">5</div>
+      <div class="week-body">
+        <div class="week-title">"The AI-Native Team of 2027"</div>
+        <div class="week-summary">Code review, testing, docs, onboarding &mdash; all transformed</div>
+        <span class="week-arc">Vision</span>
+      </div>
+    </div>
+    <div class="week-row w6">
+      <div class="week-num">6</div>
+      <div class="week-body">
+        <div class="week-title">"Stop Asking. Start Building."</div>
+        <div class="week-summary">Create the space for your team to experiment &mdash; now</div>
+        <span class="week-arc">Call</span>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="cta-box">
+    <div class="big">Create Your AI Lab This Quarter</div>
+    <div class="med">You don't need a 6-month roadmap. You need:</div>
+    <div class="cta-items">
+      <div class="cta-item">One AI-native IDE</div>
+      <div class="cta-item">One safe repo</div>
+      <div class="cta-item">One sprint to experiment</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-quote">"Strategy without execution is just a hallucination."</div>
+    <div class="footer-tag">#AIDevPartner &middot; Week 6 of 6</div>
+  </div>
+</div>
+</body>
+</html>

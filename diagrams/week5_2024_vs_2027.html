@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Week 5: Dev Team 2024 vs 2027</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .card { width: 1080px; height: 1080px; background: #fff; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .header { background: linear-gradient(135deg, #0f172a, #312e81); color: #fff; padding: 40px 50px 30px; }
+  .header h1 { font-size: 34px; font-weight: 700; }
+  .header p { font-size: 16px; color: #a5b4fc; margin-top: 6px; }
+  .content { flex: 1; padding: 30px 50px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+  .row { display: flex; align-items: stretch; gap: 0; border-radius: 14px; overflow: hidden; }
+  .row-label { width: 160px; background: #1e293b; color: #e2e8f0; padding: 18px 20px; display: flex; align-items: center; font-size: 15px; font-weight: 700; }
+  .row-before { flex: 1; padding: 18px 22px; display: flex; flex-direction: column; justify-content: center; }
+  .row-after { flex: 1; padding: 18px 22px; display: flex; flex-direction: column; justify-content: center; }
+  .row:nth-child(odd) .row-before { background: #fef2f2; }
+  .row:nth-child(odd) .row-after { background: #f0fdf4; }
+  .row:nth-child(even) .row-before { background: #fff1f2; }
+  .row:nth-child(even) .row-after { background: #ecfdf5; }
+  .row-val { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+  .row-before .row-val { color: #991b1b; }
+  .row-after .row-val { color: #166534; }
+  .row-detail { font-size: 13px; color: #64748b; }
+  .row-time { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 13px; font-weight: 700; margin-top: 6px; }
+  .row-before .row-time { background: #fca5a5; color: #7f1d1d; }
+  .row-after .row-time { background: #86efac; color: #14532d; }
+  .col-headers { display: flex; gap: 0; margin-bottom: 5px; }
+  .col-headers .spacer { width: 160px; }
+  .col-headers .col-h { flex: 1; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 8px 22px; }
+  .col-h-before { color: #dc2626; }
+  .col-h-after { color: #16a34a; }
+  .transform-banner { margin: 10px 0 0; padding: 18px 28px; background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7); border-radius: 12px; text-align: center; }
+  .transform-banner .big { font-size: 20px; font-weight: 700; color: #fff; }
+  .transform-banner .small { font-size: 14px; color: #e0e7ff; margin-top: 4px; }
+  .footer { background: #0f172a; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-q { font-size: 18px; font-weight: 600; color: #e2e8f0; }
+  .footer-tag { font-size: 14px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <h1>The AI-Native Dev Team: 2024 vs 2027</h1>
+    <p>Four dimensions of the dev workflow that are about to change fundamentally</p>
+  </div>
+  <div class="content">
+    <div class="col-headers">
+      <div class="spacer"></div>
+      <div class="col-h col-h-before">2024 &mdash; Today</div>
+      <div class="col-h col-h-after">2027 &mdash; AI-Native</div>
+    </div>
+    <div class="row">
+      <div class="row-label">&#128269;<br/>Code Review</div>
+      <div class="row-before">
+        <div class="row-val">Human reads every line</div>
+        <div class="row-detail">Manual diff review, context switching</div>
+        <span class="row-time">2-3 days</span>
+      </div>
+      <div class="row-after">
+        <div class="row-val">AI pre-reviews, human approves</div>
+        <div class="row-detail">Security, performance, style auto-flagged</div>
+        <span class="row-time">2-3 hours</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-label">&#9989;<br/>Testing</div>
+      <div class="row-before">
+        <div class="row-val">Separate phase, manual</div>
+        <div class="row-detail">1-2 week test cycles, separate QA team</div>
+        <span class="row-time">1-2 weeks</span>
+      </div>
+      <div class="row-after">
+        <div class="row-val">Continuous, AI-generated</div>
+        <div class="row-detail">Every commit tested, edge cases auto-found</div>
+        <span class="row-time">Every commit</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-label">&#128196;<br/>Documentation</div>
+      <div class="row-before">
+        <div class="row-val">"We'll do it later"</div>
+        <div class="row-detail">Perpetually outdated, nobody maintains it</div>
+        <span class="row-time">Never current</span>
+      </div>
+      <div class="row-after">
+        <div class="row-val">Auto-generated from code</div>
+        <div class="row-detail">Living docs, updated on every merge</div>
+        <span class="row-time">Always current</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row-label">&#128075;<br/>Onboarding</div>
+      <div class="row-before">
+        <div class="row-val">Shadow a senior dev</div>
+        <div class="row-detail">Tribal knowledge, slow ramp-up</div>
+        <span class="row-time">~3 months</span>
+      </div>
+      <div class="row-after">
+        <div class="row-val">AI explains + pair programs</div>
+        <div class="row-detail">Codebase Q&A, guided first PRs</div>
+        <span class="row-time">~3 weeks</span>
+      </div>
+    </div>
+    <div class="transform-banner">
+      <div class="big">The transformation window is NOW (2025&ndash;2027)</div>
+      <div class="small">Teams that start messy today will be polished by 2027. Teams still debating will be left behind.</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div>
+      <div class="footer-q">Which column describes your team today?</div>
+      <div class="footer-tag">#AIDevPartner &middot; Week 5 of 6</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
