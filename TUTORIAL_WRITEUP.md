@@ -1,7 +1,7 @@
 # MSIS 549 HW2: LinkedIn Thought Leadership Agent
 ## Tutorial Write-Up
 
-**Author**: Daa Al-Ashtawy
+**Author**: Taashi Manyanga
 **Course**: MSIS 549 — AI and GenAI for Business Applications
 **Instructor**: Prof. Leonard Boussioux
 **Date**: February 2026

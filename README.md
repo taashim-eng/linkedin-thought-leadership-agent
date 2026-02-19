@@ -150,4 +150,4 @@ MIT
 
 ## Author
 
-Taashim Ahmed — University of Washington, MSIS 549 B (Winter 2025-2026)
+Taashi Manyanga — University of Washington, MSIS 549 B (Winter 2025-2026)
