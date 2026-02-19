@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LinkedIn Thought Leadership Agent — Solution Architecture</title>
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 297mm; height: 210mm;
+    font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a2e;
+    overflow: hidden;
+    position: relative;
+  }
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f3460 0%, #16537e 100%);
+    color: white;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+  }
+  .header h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
+  .header .subtitle { font-size: 10px; opacity: 0.85; }
+  .header .badge {
+    background: #e94560;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: 600;
+  }
+  /* Problem Banner */
+  .problem-banner {
+    background: #f0f4f8;
+    border-bottom: 1px solid #dde3ea;
+    padding: 5px 20px;
+    font-size: 9.5px;
+    color: #4a5568;
+    display: flex;
+    gap: 30px;
+    height: 24px;
+    align-items: center;
+  }
+  .problem-banner strong { color: #0f3460; }
+  /* Main Canvas */
+  .canvas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 6px;
+    padding: 8px 12px 6px;
+    height: calc(210mm - 42px - 24px - 52px);
+  }
+  /* Phase Cards */
+  .phase {
+    background: white;
+    border: 1.5px solid #dde3ea;
+    border-radius: 8px;
+    padding: 7px 8px 6px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+  .phase-num {
+    background: #0f3460;
+    color: white;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .phase-num.hitl { background: #e94560; }
+  .phase-num.mcp { background: #7b2d8e; }
+  .phase-num.archive { background: #2d6a4f; }
+  .phase-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #0f3460;
+    line-height: 1.1;
+  }
+  .skill-tag {
+    font-size: 7.5px;
+    background: #e8f0fe;
+    color: #1967d2;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .skill-tag.hitl { background: #fde8ec; color: #e94560; }
+  .skill-tag.mcp { background: #f3e8f9; color: #7b2d8e; }
+  .skill-tag.archive { background: #e8f5ee; color: #2d6a4f; }
+  .phase-body { font-size: 8px; color: #4a5568; line-height: 1.35; flex: 1; }
+  .phase-body ul { padding-left: 10px; margin-top: 2px; }
+  .phase-body li { margin-bottom: 1px; }
+  .phase-io {
+    margin-top: 3px;
+    padding-top: 3px;
+    border-top: 1px dashed #dde3ea;
+    font-size: 7.5px;
+  }
+  .io-label { font-weight: 700; color: #0f3460; }
+  .io-out { color: #2d6a4f; }
+  /* Arrow between phases */
+  .arrow-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #0f3460;
+    font-weight: 700;
+  }
+  /* Wide cards spanning columns */
+  .span2 { grid-column: span 2; }
+  .span3 { grid-column: span 3; }
+  .span5 { grid-column: span 5; }
+  /* Orchestrator bar */
+  .orchestrator-bar {
+    grid-column: 1 / -1;
+    background: linear-gradient(90deg, #0f3460 0%, #16537e 50%, #0f3460 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 9px;
+  }
+  .orch-icon {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .orch-title { font-weight: 700; font-size: 10.5px; }
+  .orch-detail { opacity: 0.85; font-size: 8px; }
+  .orch-phases {
+    display: flex;
+    gap: 3px;
+    margin-left: auto;
+  }
+  .orch-pip {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.6);
+  }
+  .orch-pip.active { background: #e94560; border-color: #e94560; }
+  .orch-pip.done { background: #2ecc71; border-color: #2ecc71; }
+  /* HITL highlight */
+  .phase.hitl-phase {
+    border-color: #e94560;
+    border-width: 2px;
+    background: #fff8f9;
+  }
+  .phase.mcp-phase {
+    border-color: #7b2d8e;
+    border-width: 2px;
+    background: #faf5fd;
+  }
+  .phase.archive-phase {
+    border-color: #2d6a4f;
+    border-width: 2px;
+    background: #f5faf7;
+  }
+  /* Flow row */
+  .flow-row {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    justify-content: center;
+  }
+  .flow-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .flow-arrow {
+    color: #0f3460;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .flow-arrow.hitl-arrow { color: #e94560; }
+  .flow-arrow.loop-arrow { color: #f59e0b; font-size: 12px; }
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 52px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 5px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+  }
+  .footer-section h4 {
+    font-size: 8px;
+    color: #0f3460;
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .footer-section p { font-size: 7.5px; color: #64748b; line-height: 1.3; }
+  .legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 7.5px;
+    color: #4a5568;
+  }
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+  }
+  .legend-dot.core { background: #0f3460; }
+  .legend-dot.hitl { background: #e94560; }
+  .legend-dot.mcp { background: #7b2d8e; }
+  .legend-dot.archive { background: #2d6a4f; }
+  .legend-dot.data { background: #f59e0b; }
+  /* Annotation callouts */
+  .annotation {
+    font-size: 7px;
+    color: #94a3b8;
+    font-style: italic;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <h1>LinkedIn Thought Leadership Agent</h1>
+    <div class="subtitle">Solution Architecture & Workflow Reference</div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <span class="badge">9 SKILLS</span>
+    <span class="badge" style="background:#7b2d8e">MCP ENABLED</span>
+    <span class="badge" style="background:#2d6a4f">PATH A: SKILLS PACK</span>
+  </div>
+</div>
+
+<!-- PROBLEM BANNER -->
+<div class="problem-banner">
+  <span><strong>Problem:</strong> Senior leaders have deep expertise but lack time to consistently post thought leadership on LinkedIn.</span>
+  <span><strong>Solution:</strong> 9-skill agentic pipeline that interviews, plans, drafts, refines, benchmarks, archives, and publishes a 6-week content series.</span>
+  <span><strong>Platform:</strong> Claude Code / Manus AI</span>
+</div>
+
+<!-- MAIN CANVAS -->
+<div class="canvas">
+
+  <!-- Row 1: Orchestrator -->
+  <div class="orchestrator-bar">
+    <div class="orch-icon">&#x1F9E0;</div>
+    <div>
+      <div class="orch-title">Skill 0: Master Orchestrator</div>
+      <div class="orch-detail">Sequences all skills, maintains state (Strategic Intent + Roadmap + Drafts), enforces HITL gates, handles error recovery</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;margin-left:auto;">
+      <div style="font-size:7px;opacity:0.7;margin-bottom:2px;">Pipeline Phases</div>
+      <div class="orch-phases">
+        <div class="orch-pip done" title="Discovery"></div>
+        <div class="orch-pip done" title="Strategy"></div>
+        <div class="orch-pip done" title="Creation"></div>
+        <div class="orch-pip active" title="HITL 5a"></div>
+        <div class="orch-pip" title="Benchmark"></div>
+        <div class="orch-pip" title="Archive"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Main Pipeline (5 columns) -->
+  <!-- Phase 1: Discovery -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div class="phase-title">Intent Discovery</div>
+      <span class="skill-tag">Skill 1</span>
+    </div>
+    <div class="phase-body">
+      <strong>5-Question Strategic Interview:</strong>
+      <ul>
+        <li><strong>Q1</strong> Target Audience</li>
+        <li><strong>Q2</strong> Core Message</li>
+        <li><strong>Q3</strong> Personal Anecdote</li>
+        <li><strong>Q4</strong> Call to Action</li>
+        <li><strong>Q5</strong> Tone & Style</li>
+      </ul>
+      <div class="annotation">Gate: All 5 Qs answered before proceeding</div>
+    </div>
+    <div class="phase-io">
+      <span class="io-label">IN:</span> Topic title<br>
+      <span class="io-label io-out">OUT:</span> <span class="io-out">Strategic Intent Document</span>
+    </div>
+  </div>
+
+  <!-- Phase 2: Strategy -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div class="phase-title">Content Strategist</div>
+      <span class="skill-tag">Skill 2</span>
+    </div>
+    <div class="phase-body">
+      <strong>6-Week Narrative Arc:</strong>
+      <ul>
+        <li>Wk1: The Hook (Pain Point)</li>
+        <li>Wk2: The Framework</li>
+        <li>Wk3: The Story (Anecdote)</li>
+        <li>Wk4: The Tactics</li>
+        <li>Wk5: The Vision</li>
+        <li>Wk6: The Call (CTA)</li>
+      </ul>
+      <div class="annotation">Each week builds on the previous</div>
+    </div>
+    <div class="phase-io">
+      <span class="io-label">IN:</span> Strategic Intent<br>
+      <span class="io-label io-out">OUT:</span> <span class="io-out">6-Week Roadmap</span>
+    </div>
+  </div>
+
+  <!-- Phase 3: Draft -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div class="phase-title">Draft & Refine</div>
+      <span class="skill-tag">Skills 3-5</span>
+    </div>
+    <div class="phase-body">
+      <strong>Three-stage creation:</strong>
+      <ul>
+        <li><strong>Skill 3</strong> Draft Architect<br>
+          <span style="color:#718096;font-size:7px;">150-300 word drafts, anti-AI-ism rules</span></li>
+        <li><strong>Skill 4</strong> Voice Refiner<br>
+          <span style="color:#718096;font-size:7px;">Ghostwriter: removes AI patterns, adds authority</span></li>
+        <li><strong>Skill 5</strong> Engagement Optimizer<br>
+          <span style="color:#718096;font-size:7px;">LinkedIn hooks, formatting, hashtags, visuals</span></li>
+      </ul>
+    </div>
+    <div class="phase-io">
+      <span class="io-label">IN:</span> Intent + Roadmap<br>
+      <span class="io-label io-out">OUT:</span> <span class="io-out">6 Optimized Posts</span>
+    </div>
+  </div>
+
+  <!-- Phase 4: HITL 5a + Quality -->
+  <div class="phase hitl-phase">
+    <div class="phase-header">
+      <div class="phase-num hitl">&#x270B;</div>
+      <div class="phase-title">HITL Checkpoints</div>
+      <span class="skill-tag hitl">5a + 6a</span>
+    </div>
+    <div class="phase-body">
+      <strong>Checkpoint 5a — User Feedback:</strong>
+      <ul>
+        <li>Present all 6 posts for review</li>
+        <li>Collect: Approve / Revise / Reject</li>
+        <li>Loop to Skills 3-5 if revisions needed</li>
+      </ul>
+      <strong style="margin-top:3px;display:block;">Checkpoint 6a — Benchmark:</strong>
+      <ul>
+        <li><strong>Skill 6</strong> scores 5 metrics (1-5)</li>
+        <li>Present scorecard to user</li>
+        <li>Flag any score &lt; 3.0</li>
+      </ul>
+      <div class="annotation">Both gates require explicit user approval</div>
+    </div>
+    <div class="phase-io">
+      <span class="io-label">IN:</span> Optimized Posts<br>
+      <span class="io-label io-out">OUT:</span> <span class="io-out">Approved Series + Scores</span>
+    </div>
+  </div>
+
+  <!-- Phase 5: Archive + MCP -->
+  <div class="phase" style="display:flex;flex-direction:column;gap:4px;">
+    <div class="phase archive-phase" style="flex:1;border-radius:6px;">
+      <div class="phase-header">
+        <div class="phase-num archive">7</div>
+        <div class="phase-title">Archive Manager</div>
+        <span class="skill-tag archive">Skill 7</span>
+      </div>
+      <div class="phase-body">
+        <ul>
+          <li>Packages full session to Markdown</li>
+          <li>Intent + Roadmap + Posts + Scores</li>
+          <li>Saves to <code>archive/</code> folder</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase mcp-phase" style="flex:1;border-radius:6px;">
+      <div class="phase-header">
+        <div class="phase-num mcp">8</div>
+        <div class="phase-title">LiGo MCP Publisher</div>
+        <span class="skill-tag mcp">Skill 8</span>
+      </div>
+      <div class="phase-body">
+        <ul>
+          <li>Publishes via LinkedIn MCP</li>
+          <li>Schedule or post immediately</li>
+          <li>Verify & return live URL</li>
+        </ul>
+        <div class="annotation">Optional — requires MCP server</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Data Flow Arrows -->
+  <div class="flow-row">
+    <div class="flow-step" style="flex:1;">
+      <div style="font-size:7.5px;color:#0f3460;font-weight:600;">DISCOVERY</div>
+    </div>
+    <div class="flow-arrow">&#x27A1;</div>
+    <div class="flow-step" style="flex:1;">
+      <div style="font-size:7.5px;color:#0f3460;font-weight:600;">STRATEGY</div>
+    </div>
+    <div class="flow-arrow">&#x27A1;</div>
+    <div class="flow-step" style="flex:1;">
+      <div style="font-size:7.5px;color:#0f3460;font-weight:600;">CREATION</div>
+    </div>
+    <div class="flow-arrow hitl-arrow">&#x27A1;</div>
+    <div class="flow-step" style="flex:1;">
+      <div style="font-size:7.5px;color:#e94560;font-weight:600;">REVIEW &#x21C4;</div>
+    </div>
+    <div class="flow-arrow" style="color:#2d6a4f;">&#x27A1;</div>
+    <div class="flow-step" style="flex:1;">
+      <div style="font-size:7.5px;color:#2d6a4f;font-weight:600;">FINALIZE</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-section">
+    <h4>Legend</h4>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot core"></div> Core Skill</div>
+      <div class="legend-item"><div class="legend-dot hitl"></div> HITL Checkpoint</div>
+      <div class="legend-item"><div class="legend-dot mcp"></div> MCP Integration</div>
+      <div class="legend-item"><div class="legend-dot archive"></div> Archive/Output</div>
+      <div class="legend-item"><div class="legend-dot data"></div> Revision Loop</div>
+    </div>
+  </div>
+  <div class="footer-section">
+    <h4>Benchmark Metrics (Skill 6)</h4>
+    <p>Actionability (1-5) &bull; Voice Consistency (1-5) &bull; Strategic Depth (1-5) &bull; Narrative Cohesion (1-5) &bull; LinkedIn Optimization (1-5)</p>
+  </div>
+  <div class="footer-section">
+    <h4>Key Design Decisions</h4>
+    <p>Sequential pipeline with 2 HITL gates ensures quality without full automation risk. Skills are modular: swap Skill 4 for a different voice engine without changing the pipeline.</p>
+  </div>
+  <div class="footer-section">
+    <h4>Tech Stack</h4>
+    <p>Skills: Markdown (.md) &bull; Platform: Claude Code / Manus AI &bull; MCP: LiGo LinkedIn Runner &bull; Output: Markdown archive &bull; Repo: GitHub</p>
+  </div>
+</div>
+
+</body>
+</html>
