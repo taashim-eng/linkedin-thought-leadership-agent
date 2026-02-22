@@ -1,0 +1,43 @@
+/* Custom styles for md-to-pdf to prevent table column cutoff */
+body {
+  font-size: 14px;
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Prevent code blocks from overflowing */
+pre, code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Blockquotes for post excerpts */
+blockquote {
+  border-left: 3px solid #ccc;
+  padding-left: 12px;
+  margin-left: 0;
+  color: #333;
+  font-style: italic;
+}
+
+@page {
+  margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+  size: letter;
+}

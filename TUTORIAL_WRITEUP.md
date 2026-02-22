@@ -85,17 +85,19 @@ The architecture follows a left-to-right flow: User Input → Discovery (Skill 1
 
 ### 2.2 All 9 Skills
 
-| # | Skill Name | File | Purpose | Key Innovation |
-|---|-----------|------|---------|---------------|
-| 0 | **Master Orchestrator** | `skill_0_master_orchestrator.md` | Sequences all skills, maintains state, enforces HITL gates | Error recovery + state management |
-| 1 | **Intent Discovery** | `skill_1_intent_discovery.md` | 5-question strategic interview | Structured extraction of voice/audience/anecdote |
-| 2 | **Content Strategist** | `skill_2_content_strategist.md` | Creates 6-week narrative arc roadmap | Proven Hook→Framework→Story→Tactics→Vision→Call structure |
-| 3 | **Draft Architect** | `skill_3_draft_architect.md` | Generates initial 150-300 word drafts | Built-in anti-AI-ism rules |
-| 4 | **Voice & Tone Refiner** | `skill_4_voice_tone_refiner.md` | Ghostwriter: matches leader's authentic voice | AI pattern detection + replacement table |
-| 5 | **Engagement Optimizer** | `skill_5_engagement_optimizer.md` | LinkedIn formatting, hooks, hashtags + **HITL 5a** | Platform-specific optimization |
-| 6 | **Quality Reviewer** | `skill_6_quality_reviewer.md` | 5-metric benchmark + **HITL 6a** | Structured scoring with failure flagging |
-| 7 | **Archive Manager** | `skill_7_archive_manager.md` | Packages complete session to Markdown | Full reproducibility of every run |
-| 8 | **Poster & Reviewer** | `skill_8_poster_reviewer.md` | Publishes via LiGo MCP (LinkedIn API) | **MCP bonus**: direct LinkedIn integration |
+| # | Skill | Purpose | Key Innovation |
+|---|-------|---------|---------------|
+| 0 | **Master Orchestrator** | Sequences all skills, maintains state, enforces HITL gates | Error recovery + state management |
+| 1 | **Intent Discovery** | 5-question strategic interview | Structured voice/audience extraction |
+| 2 | **Content Strategist** | Creates 6-week narrative arc roadmap | Hook-Framework-Story-Tactics-Vision-Call arc |
+| 3 | **Draft Architect** | Generates initial 150-300 word drafts | Built-in anti-AI-ism rules |
+| 4 | **Voice & Tone Refiner** | Ghostwriter: matches leader's voice | AI pattern detection + replacement table |
+| 5 | **Engagement Optimizer** | LinkedIn formatting, hooks + **HITL 5a** | Platform-specific optimization |
+| 6 | **Quality Reviewer** | 5-metric benchmark + **HITL 6a** | Structured scoring with failure flagging |
+| 7 | **Archive Manager** | Packages complete session to Markdown | Full reproducibility of every run |
+| 8 | **Poster & Reviewer** | Publishes via MCP or LinkedIn API | **MCP bonus**: direct LinkedIn integration |
+
+*Skill files: `skills/skill_0_master_orchestrator.md` through `skills/skill_8_poster_reviewer.md`*
 
 ### 2.3 Pipeline Flow
 
@@ -423,16 +425,18 @@ Week 6: The Call — synthesize + drive the CTA
 >
 > #AgenticAI #DataEngineering #AzureOpenAI #DataLeadership #AgenticDataSeries
 
-**Publishing Log (Run 4)**:
+**Publishing Log (Run 4)** — All 6 posts published live to LinkedIn on 2026-02-21:
 
-| Week | Title | LinkedIn URN | Status |
-|------|-------|-------------|--------|
-| 1 | "Your Data Engineers Are Using AI Like It's 2023" | `urn:li:share:7431126731257958400` | LIVE |
-| 2 | "The Agentic Data Stack: Architecture That Actually Works" | `urn:li:share:7431126742880346112` | LIVE |
-| 3 | "We Had Azure OpenAI. Nobody Used It Right." | `urn:li:share:7431126754121125888` | LIVE |
-| 4 | "5 Safeguards Every Data Team Needs Before Deploying AI Agents" | `urn:li:share:7431126763595857920` | LIVE |
-| 5 | "The 2027 Data Team: Fewer Tickets, More Architecture" | `urn:li:share:7431126775142789120` | LIVE |
-| 6 | "Stop Chatting With AI. Start Architecting With It." | `urn:li:share:7431126784642834432` | LIVE |
+| Wk | Title | Status |
+|----|-------|--------|
+| 1 | "Your Data Engineers Are Using AI Like It's 2023" | LIVE |
+| 2 | "The Agentic Data Stack: Architecture That Actually Works" | LIVE |
+| 3 | "We Had Azure OpenAI. Nobody Used It Right." | LIVE |
+| 4 | "5 Safeguards Before Deploying AI Agents" | LIVE |
+| 5 | "The 2027 Data Team: Fewer Tickets, More Architecture" | LIVE |
+| 6 | "Stop Chatting With AI. Start Architecting With It." | LIVE |
+
+*LinkedIn URNs: `urn:li:share:7431126731257958400` through `urn:li:share:7431126784642834432`. Full URN list in `archive/Agentic_AI_Data_Engineering_2026-02-21.md`.*
 
 **Figure 3: Benchmark Scorecard — Run 4 (Agentic AI for Data Engineering)**
 
