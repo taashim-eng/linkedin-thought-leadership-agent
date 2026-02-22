@@ -32,7 +32,7 @@
 |-------|----------|--------|
 | Real workflow (not fictional) | LinkedIn thought leadership is explicitly listed in the assignment examples ("Drafting and iterating LinkedIn posts") | ✅ |
 | Meaningful to personal context | Section 1 of Tutorial explains the personal pain point: leaders have expertise but can't maintain consistent LinkedIn presence due to overhead of planning a cohesive series | ✅ |
-| Can be run at least twice on real inputs | Run 1: SQL Query Performance (Q1 2026 series). Run 2: Data Cleanliness. Run 3: AI Chatbot to Dev Tool (live test, Feb 2026) | ✅ |
+| Can be run at least twice on real inputs | Run 1: SQL Query Performance. Run 2: Data Cleanliness. Run 3: AI Chatbot to Dev Tool (live published, Feb 2026). Run 4: Agentic AI for Data Engineering (all 6 published, Feb 2026) | ✅ |
 | Clear justification for agentic approach | Tutorial §1.2: explains why single-prompt LLM fails (generic, disconnected) vs. multi-stage pipeline (authentic, cohesive) | ✅ |
 
 **Self-Score: Excellent (1/1)**
@@ -62,7 +62,7 @@
 
 | Check | Evidence | Status |
 |-------|----------|--------|
-| Runs end-to-end | 3 complete runs documented (SQL, Data Cleanliness, AI Chatbot to Dev Tool) | ✅ |
+| Runs end-to-end | 4 complete runs documented (SQL, Data Cleanliness, AI Chatbot to Dev Tool, Agentic AI for Data Eng.) | ✅ |
 | Usable, well-formatted outputs | `outputs/Q1_2026_SQL_Performance_Series.md`, `outputs/test_run_AI_Dev_Tool_Series.md` — 6 ready-to-post LinkedIn posts per run | ✅ |
 | Prompts well-structured | Each skill has: name, purpose, inputs, outputs, step-by-step workflow, constraints, failure modes, examples | ✅ |
 | At least one meaningful prompt iteration | Tutorial §4.1: Voice Refiner iterated 3 times (v1: "sound professional" → v2: named patterns → v3: detection table). Voice score jumped from 3.0 to 4.7 | ✅ |
@@ -78,7 +78,7 @@
 
 | Check | Evidence | Status |
 |-------|----------|--------|
-| 2+ real runs | Run 1 (SQL), Run 2 (Data Cleanliness), Run 3 (AI Chatbot, live published) | ✅ |
+| 2+ real runs | Run 1 (SQL), Run 2 (Data Cleanliness), Run 3 (AI Chatbot, live published), Run 4 (Agentic AI, all 6 published) | ✅ |
 | Inputs documented | Topic, audience, anecdote, CTA, tone documented for each run in archives and Tutorial §5 | ✅ |
 | Outputs documented | Full 6-post series outputs saved in `outputs/` directory | ✅ |
 | Changes after first run | Tutorial §5.1: added "In the era of AI" to banned list; added system diagram suggestion to Skill 5; revised Week 5 draft | ✅ |
@@ -115,7 +115,7 @@
 
 | Check | Evidence | Status |
 |-------|----------|--------|
-| 2+ test cases | 4 test cases: SQL Performance, Data Cleanliness, WAL Protocol (edge), Vague Input (ambiguous) | ✅ |
+| 2+ test cases | 6 test cases: SQL Performance, Data Cleanliness, AI Chatbot to Dev Tool, Agentic AI for Data Eng., WAL Protocol (edge), Vague Input (ambiguous) | ✅ |
 | Baseline comparison | Single-prompt GPT-4 run documented with actual output excerpts. Agentic: 4.5/5.0 vs. Baseline: 2.0/5.0 | ✅ |
 | Clear metrics defined | 5 metrics with 1-5 scale anchors: Actionability, Voice Consistency, Strategic Depth, Narrative Cohesion, LinkedIn Optimization | ✅ |
 | Edge case included | WAL Protocol — highly technical niche topic. Score: 3.4/5.0, Voice Consistency failed (2.5) | ✅ |
@@ -187,11 +187,12 @@
 
 ## Gaps to Address Before Final Submission
 
-| Priority | Gap | Recommendation |
-|----------|-----|----------------|
-| **HIGH** | Demo video not recorded | Record 3-minute walkthrough of repo + live post + benchmark (30-60 min effort) |
-| **MEDIUM** | Tutorial does not include exact prompts for all 9 skills inline | Skills are in repo; could add appendix to Tutorial with all 9 skill files printed |
-| **LOW** | Single rater bias in benchmark | Acknowledged in Tutorial §6.3 and Benchmark Appendix §6 — no action needed for submission |
+| Priority | Gap | Status |
+|----------|-----|--------|
+| **HIGH** | Demo video not recorded | ⚠️ OPEN — Record 3-minute walkthrough (30-60 min effort) for +1 bonus point |
+| ~~MEDIUM~~ | ~~Tutorial does not include exact prompts for all 9 skills inline~~ | ✅ RESOLVED — Appendix A added to Tutorial with all 9 skill summaries |
+| ~~MEDIUM~~ | ~~Section 5.3 (Run 3) missing from Tutorial~~ | ✅ RESOLVED — Section 5.3 added with full input/output/analysis |
+| **LOW** | Single rater bias in benchmark | Acknowledged in Tutorial §6.3 and Benchmark Appendix §9 — no action needed |
 | **LOW** | Week 5 vision weakness | Acknowledged as known limitation in Tutorial §7 — no action needed |
 
 ---

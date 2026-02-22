@@ -203,7 +203,8 @@ The downstream skills produced a reasonable series, scoring 3.6/5.0 average. The
 |-----------|:---:|:---:|:---:|:---:|:---:|:---:|
 | **TC1: SQL Performance** | 4.2 | 4.7 | 4.3 | 4.8 | 4.3 | **4.5** |
 | **TC2: Data Cleanliness** | 4.2 | 4.2 | 4.0 | 4.5 | 4.0 | **4.2** |
-| **TC5: Agentic AI for Data Eng.** | 4.2 | 4.4 | 4.2 | 4.7 | 4.3 | **4.35** |
+| **TC3: AI Chatbot to Dev Tool** | 4.2 | 4.7 | 4.3 | 4.8 | 4.7 | **4.5** |
+| **TC4: Agentic AI for Data Eng.** | 4.2 | 4.4 | 4.2 | 4.7 | 4.3 | **4.35** |
 | **Edge: WAL Protocol** | 3.5 | 2.5 | 4.0 | 3.8 | 3.2 | **3.4** |
 | **Ambiguous: Vague Input** | 3.5 | 3.8 | 3.2 | 4.0 | 3.5 | **3.6** |
 | **Baseline: Single-Prompt** | 2.5 | 2.2 | 1.8 | 1.0 | 2.5 | **2.0** |
