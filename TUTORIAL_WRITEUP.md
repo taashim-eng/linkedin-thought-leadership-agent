@@ -5,7 +5,7 @@
 **Course**: MSIS 549 — AI and GenAI for Business Applications
 **Instructor**: Prof. Leonard Boussioux
 **Date**: February 2026
-**Path**: A (Skills Pack) | **Bonus**: MCP Tool (LiGo LinkedIn Runner)
+**Path**: A (Skills Pack) | **Bonus**: MCP Tool (`@ldraney/mcp-linkedin` — LinkedIn API publishing)
 
 **System Artifact**: [GitHub Repository](https://github.com/taashim-eng/linkedin-thought-leadership-agent)
 
@@ -49,10 +49,10 @@ Each of these stages requires different expertise — which maps naturally to sp
 
 ### Tech Stack
 - **Skills**: 9 Markdown files (`.md`) defining behavior, constraints, and prompts
-- **Orchestration**: Manus AI (primary), Claude Code (secondary testing)
-- **MCP**: LiGo LinkedIn Runner for optional direct publishing
-- **Output**: Markdown archive files, LinkedIn-ready post text
-- **Repository**: GitHub
+- **Orchestration**: Manus AI (Runs 1-2), Claude Code with Claude Opus 4.6 (Runs 3-4) — skills are platform-portable
+- **MCP**: `@ldraney/mcp-linkedin` for optional direct LinkedIn publishing (with direct API fallback)
+- **Output**: Markdown archive files, LinkedIn-ready post text, live LinkedIn posts
+- **Repository**: GitHub ([link](https://github.com/taashim-eng/linkedin-thought-leadership-agent))
 
 ---
 
@@ -62,7 +62,26 @@ Each of these stages requires different expertise — which maps naturally to sp
 
 The system is a **sequential pipeline** with 9 specialized skills, coordinated by a Master Orchestrator (Skill 0). Two mandatory Human-in-the-Loop (HITL) checkpoints ensure quality before finalization.
 
-> **See**: `diagrams/architecture_infographic.html` for the full visual architecture diagram.
+**Figure 1: Solution Architecture** *(open `diagrams/architecture_infographic.html` in a browser for the full interactive diagram)*
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    SKILL 0: MASTER ORCHESTRATOR                              │
+│              (State Management + HITL Gate Enforcement)                      │
+├──────────┬──────────┬──────────────────┬──────────────┬──────────────────────┤
+│ Phase 1  │ Phase 2  │    Phase 3       │  Phase 4-5   │      Phase 6        │
+│          │          │                  │              │                      │
+│ Skill 1  │ Skill 2  │ Skill 3 → 4 → 5 │ HITL 5a → 6a │ Skill 7    Skill 8  │
+│ Intent   │ Content  │ Draft → Voice →  │ User Review  │ Archive    Publish   │
+│ Discovery│ Strategy │ LinkedIn Format  │ + Benchmark  │ (.md/.pdf) (LinkedIn)│
+│          │          │                  │              │                      │
+│ 5-Q      │ 6-Week   │ Anti-AI Rules    │ Approve /    │ Full       MCP /     │
+│ Interview│ Roadmap  │ Detection Table  │ Revise /     │ Session    API /     │
+│          │          │ Hook Optimization│ Reject       │ Record     Manual    │
+└──────────┴──────────┴──────────────────┴──────────────┴──────────────────────┘
+```
+
+The architecture follows a left-to-right flow: User Input → Discovery (Skill 1) → Strategy (Skill 2) → Creation (Skills 3-5) → HITL Review (Checkpoints 5a/6a) → Archive & Publish (Skills 7-8). The Master Orchestrator (Skill 0) sits above all phases, maintaining session state and enforcing gates between each phase.
 
 ### 2.2 All 9 Skills
 
@@ -184,7 +203,7 @@ When the user requested changes during HITL 5a, it wasn't clear which skill to r
 
 - **Why not n8n?** I considered Path B (n8n) but chose Path A (Skills Pack) because: (a) the workflow is interactive and requires human judgment at two stages, which is harder to orchestrate in a visual workflow builder; (b) skills are more portable — I can use them in Claude Code, Manus, or any LLM assistant.
 
-- **Why 9 skills instead of 3-4?** Each skill has a single, clear responsibility. This made debugging much easier — when the voice sounded wrong, I knew to look at Skill 4, not dig through a monolithic prompt.
+- **Why 9 skills instead of 3-4?** Each skill has a single, clear responsibility, which made debugging and iteration dramatically easier. A concrete example: during Run 1 (SQL Performance), the HITL 5a reviewer flagged that posts sounded "too corporate." Because drafting (Skill 3), voice refinement (Skill 4), and LinkedIn formatting (Skill 5) were separate skills, I could re-invoke only Skill 4 with updated detection rules — without regenerating the draft structure or losing the LinkedIn formatting. If these three had been combined into a single "content generation" skill, the entire output would have needed regeneration. The separation also made prompt iteration targeted: the 3-version evolution of Skill 4's detection table (Section 4.1) would have been buried inside a monolithic prompt, making it harder to isolate what improved the output.
 
 - **Why Manus AI?** Manus provided a clean environment for orchestrating multi-skill pipelines with state management. I also tested the skills in Claude Code to verify portability.
 
@@ -292,6 +311,38 @@ Week 6: The Call — synthesize + drive the CTA
 - Added "system diagram" suggestions alongside visual recommendations in Skill 5
 - Revised Week 5 draft to include specific architectural examples
 
+#### Concrete Example: Run 1 Input → Output
+
+**Input (Interview Answers)**:
+| Question | Answer |
+|----------|--------|
+| Q1: Audience | Data Engineers & Business Stakeholders |
+| Q2: Core Message | Continuous improvement in SQL is essential for AI-readiness |
+| Q3: Anecdote | Business team frustrated when data wasn't in sync with AI models; "near real-time" became a requirement |
+| Q4: CTA | Rethink your data platform strategy; follow for ongoing insights |
+| Q5: Tone | Provocative + Educational |
+
+**Output (Week 1 — Final Post)**:
+> Is your data platform actually "good enough," or is it just holding you back?
+>
+> Traditional SQL performance is no longer a technical detail — it's a strategic bottleneck. Many teams settle for "good enough" query speeds, but as business demands shift toward real-time insights, that complacency becomes a liability.
+>
+> I see it constantly: dashboards that lag behind decisions. Reports that refresh overnight while the market moves in minutes. Queries that were "fast enough" three years ago now block the AI workloads your business depends on.
+>
+> Performance is the foundation of agility. If your data can't keep up, neither can your team.
+>
+> This week, ask yourself one question: When was the last time someone on your team profiled a slow query — not because it broke, but because "good enough" might not be?
+>
+> #SQLPerformance #DataEngineering #DataStrategy #AIReadiness #SQLSeriesQ1
+>
+> Coming Next Week: Why "instant satisfaction" is now a data engineering requirement.
+
+**Figure 2: Week 1 Post Published Live on LinkedIn** *(from Run 3 — AI Chatbot to Dev Tool series, URN: `urn:li:share:7430329696413843458`)*
+
+![LinkedIn Post Screenshot](diagrams/Week%201.png)
+
+*Screenshot shows the live LinkedIn post with engagement metrics. The post was published via the LinkedIn API (Skill 8, Option B2) after completing the full pipeline including both HITL checkpoints.*
+
 ### 5.2 Run 2: Data Cleanliness (Second Test Case)
 
 **Input**: Topic = "Enhancing Data Cleanliness" for Data Analysts and Product Managers. Educational + Empathetic tone. Anecdote about a product launch delayed 2 weeks due to dirty customer data.
@@ -313,6 +364,87 @@ Week 6: The Call — synthesize + drive the CTA
 **Changes After Run 2**:
 - Added a prompt in Skill 1 to push back on vague CTAs: "Can you make that more specific? What's the ONE thing you want readers to do this week?"
 - Noted that Week 5 (Vision) consistently underperforms — potential improvement is adding a "trends research" sub-step
+
+### 5.4 Run 4: Agentic AI for Real-World Data Engineering (Fourth Test Case)
+
+**Input**: Topic = "Agentic AI for Real-World Data Engineering — Design, Architecture, Process Flow, Safeguards & Standards." Mixed Technical + Leadership audience. Provocative + Educational tone. Personal anecdote about building an Azure data platform where engineers only used AI as chatbots until the team workshopped an agentic architecture.
+
+**Process**: Full pipeline execution through Skills 0-8, run on Claude Code (Claude Opus 4.6).
+
+**Output**: 6-week series saved to `archive/Agentic_AI_Data_Engineering_2026-02-21.md`. All 6 posts published live to LinkedIn via direct API (Option B2).
+
+**What Worked**:
+- The interview → roadmap → draft flow produced a cohesive 6-week arc on the first pass
+- The war story (Week 3: "We Had Azure OpenAI. Nobody Used It Right.") was the strongest post — authentic, specific, and relatable
+- The LinkedIn API publishing (Skill 8 fallback Option B2) worked flawlessly — all 6 posts published in under 15 seconds
+
+**What Didn't Work / HITL Revision**:
+- At HITL Checkpoint 5a, the reviewer requested that posts "expand on different ways teams can experiment with Agentic AI to illustrate they have options." The initial drafts presented agentic AI as a single approach rather than showing multiple entry points.
+- This required revising Weeks 1, 2, 4, and 6 to add specific tooling options (platform-native, open-source, IDE-embedded, low-code approaches). Weeks 3 and 5 were left unchanged.
+- After revision, all 6 posts were approved at HITL 5a (Round 2).
+
+**Benchmark Score**: 4.35/5.0 — Weakest post was Week 5 (3.8), consistent with the pattern observed in all previous runs.
+
+**Changes After Run 4**:
+- Confirmed that Week 5 (Vision) is a systemic weak spot across all topics — this is now a documented known limitation with a proposed fix (add a trends research sub-step)
+- Validated that the pipeline is portable across platforms: Runs 1-2 on Manus AI, Run 3 on Claude Code, Run 4 on Claude Code with a different model version
+
+#### Concrete Example: Run 4 Input → Output
+
+**Input (Interview Answers)**:
+| Question | Answer |
+|----------|--------|
+| Q1: Audience | Mixed Technical + Leadership (Data Engineers, Architects, Directors, VPs, CDOs) |
+| Q2: Core Message | Modern data teams that don't adopt agentic patterns will be outpaced by those that do |
+| Q3: Anecdote | Built an Azure data platform with Azure OpenAI and Foundry available, but engineers only used them as chatbots until the team workshopped an agentic architecture |
+| Q4: CTA | Audit workflows, start a pilot, rethink team structure, follow + comment |
+| Q5: Tone | Provocative + Educational |
+
+**Output (Week 3 — Final Post)**:
+> We had just finished building a new data platform in Azure.
+>
+> Azure OpenAI was available. Azure AI Foundry was configured. The tools were there. The budget was approved. On paper, we were an "AI-enabled" data team.
+>
+> In practice? Our data engineers used AI to search for syntax errors. To summarize documentation. To draft emails. Expensive chatbot usage.
+>
+> The turning point wasn't a new tool. It was a workshop.
+>
+> We pulled the team together and mapped our actual data workflows -- every manual step, every handoff, every bottleneck where an engineer was doing work that didn't require an engineer's judgment.
+>
+> Then we asked: "What if an agent owned this step?"
+>
+> Not "What if AI helped with this step." Owned it.
+>
+> That reframing changed everything. We architected an agentic solution where agents handled ingestion monitoring, schema drift detection, and data quality validation autonomously -- with human review only at decision points that genuinely required expertise.
+>
+> The result: significant acceleration across pipeline delivery, reduced manual intervention on routine tasks, and measurable improvement across our key KPIs.
+>
+> The tools didn't change. The architecture did.
+>
+> #AgenticAI #DataEngineering #AzureOpenAI #DataLeadership #AgenticDataSeries
+
+**Publishing Log (Run 4)**:
+
+| Week | Title | LinkedIn URN | Status |
+|------|-------|-------------|--------|
+| 1 | "Your Data Engineers Are Using AI Like It's 2023" | `urn:li:share:7431126731257958400` | LIVE |
+| 2 | "The Agentic Data Stack: Architecture That Actually Works" | `urn:li:share:7431126742880346112` | LIVE |
+| 3 | "We Had Azure OpenAI. Nobody Used It Right." | `urn:li:share:7431126754121125888` | LIVE |
+| 4 | "5 Safeguards Every Data Team Needs Before Deploying AI Agents" | `urn:li:share:7431126763595857920` | LIVE |
+| 5 | "The 2027 Data Team: Fewer Tickets, More Architecture" | `urn:li:share:7431126775142789120` | LIVE |
+| 6 | "Stop Chatting With AI. Start Architecting With It." | `urn:li:share:7431126784642834432` | LIVE |
+
+**Figure 3: Benchmark Scorecard — Run 4 (Agentic AI for Data Engineering)**
+
+| Post | Actionability | Voice | Depth | Cohesion | LinkedIn | **Avg** |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|
+| Week 1 | 3.5 | 4.5 | 4.0 | 4.5 | 4.5 | **4.2** |
+| Week 2 | 4.5 | 4.0 | 4.5 | 4.5 | 4.0 | **4.3** |
+| Week 3 | 4.0 | 5.0 | 4.5 | 5.0 | 4.5 | **4.6** |
+| Week 4 | 5.0 | 4.5 | 4.5 | 4.5 | 4.5 | **4.6** |
+| Week 5 | 3.0 | 4.0 | 3.5 | 4.5 | 4.0 | **3.8** |
+| Week 6 | 5.0 | 4.5 | 4.0 | 5.0 | 4.5 | **4.6** |
+| **Avg** | **4.2** | **4.4** | **4.2** | **4.7** | **4.3** | **4.35** |
 
 ---
 
@@ -337,12 +469,15 @@ Week 6: The Call — synthesize + drive the CTA
 
 ### 6.2 Summary Results
 
+**Figure 4: Aggregate Benchmark Results Across All Test Cases**
+
 | Test Case | Agentic Score | Baseline Score | Delta |
 |-----------|:---:|:---:|:---:|
 | SQL Performance | **4.5** | 2.0 | +2.5 |
 | Data Cleanliness | **4.2** | — | — |
 | Edge: Technical Topic | **3.4** | — | — |
 | Ambiguous: Vague Input | **3.6** | — | — |
+| Agentic AI for Data Engineering | **4.35** | — | — |
 
 **Biggest win**: Narrative Cohesion — the baseline scored 1.0 (posts are disconnected), the agentic system scored 4.8 (posts form a story). This is the single largest improvement and validates the core design decision of using a 6-week roadmap skill.
 
@@ -376,7 +511,7 @@ Week 6: The Call — synthesize + drive the CTA
 The biggest learning was that **specific, table-based constraints outperform vague instructions**. "Sound professional" is useless. A table that says "replace X with Y" is actionable for the LLM. This applies broadly to any skill-based system.
 
 ### Would I Keep Using This?
-**Yes.** I plan to use this system for my own LinkedIn presence in Q1 2026. The SQL Performance series (Run 1) is ready to publish. The system saves approximately 4-5 hours per 6-week series compared to writing from scratch, while producing content that's more strategically cohesive than what I'd write in scattered 30-minute sessions.
+**Yes — and I already am.** I've now run this system 4 times across different topics (SQL Performance, Data Cleanliness, AI Chatbot to Dev Tool, Agentic AI for Data Engineering). Run 3 resulted in a live LinkedIn post (Week 1, URN: `urn:li:share:7430329696413843458`), and Run 4 resulted in all 6 posts published live. The system saves approximately 4-5 hours per 6-week series compared to writing from scratch, while producing content that's more strategically cohesive than what I'd write in scattered 30-minute sessions. The pipeline is genuinely reusable — each subsequent run takes less human time as the skills are already tuned.
 
 ---
 
@@ -417,16 +552,25 @@ The biggest learning was that **specific, table-based constraints outperform vag
 
 ### MCP Setup (Optional — for auto-publishing)
 
-Add to your LLM's MCP configuration:
+Install the LinkedIn MCP package globally:
+```bash
+npm install -g @ldraney/mcp-linkedin
+```
+
+Then add to your LLM's MCP configuration (e.g., `~/.claude/settings.json`):
 ```json
 {
   "mcpServers": {
-    "ligo-linkedin": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/ligo-mcp-server"],
+    "linkedin": {
+      "command": "C:\\Users\\<username>\\AppData\\Roaming\\npm\\mcp-linkedin.cmd",
+      "args": [],
       "env": {
-        "LINKEDIN_CLIENT_ID": "<your-id>",
-        "LINKEDIN_CLIENT_SECRET": "<your-secret>"
+        "LINKEDIN_CLIENT_ID": "<your-client-id>",
+        "LINKEDIN_CLIENT_SECRET": "<your-client-secret>",
+        "LINKEDIN_REDIRECT_URI": "http://localhost:3000/callback",
+        "LINKEDIN_API_VERSION": "202510",
+        "LINKEDIN_ACCESS_TOKEN": "<your-access-token>",
+        "LINKEDIN_PERSON_ID": "<your-person-id>"
       }
     }
   }
@@ -435,4 +579,4 @@ Add to your LLM's MCP configuration:
 
 ---
 
-*Total word count: ~2,800 words | Estimated reading time: 12 minutes*
+*Total word count: ~4,200 words | Estimated reading time: 18 minutes*

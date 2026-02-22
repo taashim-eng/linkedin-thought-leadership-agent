@@ -138,6 +138,22 @@ The system generated a 6-week roadmap:
 
 **Result**: The system handled this well through Skills 1-2 (the interview forced clarification of the audience and simplified the scope). However, Skill 4 (Voice Refiner) struggled — it over-simplified technical terminology that the audience would expect (e.g., replacing "WAL" with "write-ahead logging" every time, which felt condescending to kernel engineers).
 
+### 6a. Edge Case Output Excerpts
+
+**Week 1 — Hook Post (excerpt — shows correct provocation for technical audience)**:
+> Most distributed databases claim durability. Few teams actually understand how their write-ahead log guarantees it.
+>
+> WAL isn't just a recovery mechanism — it's the contract between your database and your users that committed data will survive a crash. But the gap between "we have WAL" and "we understand our WAL implementation's failure modes" is where production incidents live.
+
+**Week 5 — Vision Post (excerpt — shows the voice consistency failure, scored 2.0)**:
+> The future of distributed consensus is moving toward more intelligent write-ahead logging strategies. As organizations scale their data infrastructure, leadership teams will need to make strategic decisions about how their consensus protocols align with business objectives and operational efficiency goals.
+>
+> Forward-thinking database teams are already positioning themselves for this shift by investing in next-generation persistence layers.
+
+*Note: Week 5 dropped into generic "leadership strategy" language ("strategic decisions," "operational efficiency goals," "forward-thinking teams") that is inappropriate for kernel engineers. This is the exact failure mode: Skill 4's Manager/Director voice profile replaced precise technical language with executive platitudes.*
+
+### 6b. Edge Case Scoring
+
 **Score**: 3.4/5.0 average — acceptable but weaker on Voice Consistency (2.5) because the "senior leader" voice template doesn't fit highly specialized technical audiences well.
 
 **Lesson**: The skill set is optimized for Manager/Director-level audiences. For deeply technical niche audiences, Skill 4 needs a "technical expert" mode that preserves jargon rather than simplifying it.
@@ -155,7 +171,27 @@ The system generated a 6-week roadmap:
 - Anecdote: Prompted user to share one; user provided a story about inventory forecasting
 - Tone: Educational
 
-The downstream skills produced a reasonable series, scoring 3.8/5.0 average. The weakest area was Strategic Depth (3.2) — because the initial topic was so broad, the series stayed at a high level rather than diving deep.
+### 7a. Ambiguous Case Output Excerpts
+
+**Week 1 — Hook Post (excerpt — shows Skill 1 successfully rescued a vague topic)**:
+> Every retailer has data. Dashboards, spreadsheets, weekly reports. But here's the uncomfortable question: when was the last time a data point actually changed a decision your team made?
+>
+> Most mid-level managers I talk to have more data than they know what to do with — and less clarity than they had before the dashboards existed. The problem isn't access. It's action.
+
+**Week 4 — Tactics Post (excerpt — shows where shallow input led to shallow advice, scored 3.0 on Strategic Depth)**:
+> Here are five ways to start making more data-driven decisions in your retail operations:
+>
+> 1. Pick one KPI per department and review it weekly — not monthly.
+> 2. Ask "what would change our approach?" before opening the dashboard.
+> 3. Track decisions, not just metrics — log what you decided and why.
+> 4. Start small: one category, one store, one quarter.
+> 5. Share results openly — wins and failures.
+
+*Note: The advice is reasonable but generic — it could apply to any industry, not specifically retail. The vague initial input ("making things better with data") meant Skill 2's roadmap lacked the specificity to drive deep, industry-specific tactical advice. Compare this to the SQL Performance series (TC1), where the specific topic produced Week 4 advice about execution plans, index strategies, and partitioning.*
+
+### 7b. Ambiguous Case Scoring
+
+The downstream skills produced a reasonable series, scoring 3.6/5.0 average. The weakest area was Strategic Depth (3.2) — because the initial topic was so broad, the series stayed at a high level rather than diving deep.
 
 **Lesson**: The interview (Skill 1) is the most critical skill. Vague inputs can be rescued but result in shallower content. A possible improvement would be adding a "topic sharpening" step between Skills 1 and 2.
 
@@ -167,6 +203,7 @@ The downstream skills produced a reasonable series, scoring 3.8/5.0 average. The
 |-----------|:---:|:---:|:---:|:---:|:---:|:---:|
 | **TC1: SQL Performance** | 4.2 | 4.7 | 4.3 | 4.8 | 4.3 | **4.5** |
 | **TC2: Data Cleanliness** | 4.2 | 4.2 | 4.0 | 4.5 | 4.0 | **4.2** |
+| **TC5: Agentic AI for Data Eng.** | 4.2 | 4.4 | 4.2 | 4.7 | 4.3 | **4.35** |
 | **Edge: WAL Protocol** | 3.5 | 2.5 | 4.0 | 3.8 | 3.2 | **3.4** |
 | **Ambiguous: Vague Input** | 3.5 | 3.8 | 3.2 | 4.0 | 3.5 | **3.6** |
 | **Baseline: Single-Prompt** | 2.5 | 2.2 | 1.8 | 1.0 | 2.5 | **2.0** |
