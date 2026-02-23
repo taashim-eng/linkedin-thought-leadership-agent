@@ -61,7 +61,7 @@ The orchestrator will guide you through the rest. Here's what to expect at each 
 ---
 
 ### Stage 1: The Interview (5 minutes)
-*Skill 1 — Intent Discovery*
+#### Skill 1 — Intent Discovery
 
 You'll be asked 5 questions. Answer them honestly and specifically — the quality of your answers directly determines the quality of your posts.
 
@@ -96,7 +96,7 @@ Make this specific: "Run an EXPLAIN ANALYZE on their top 3 slowest queries" beat
 ---
 
 ### Stage 2: Approve the Roadmap (2 minutes)
-*Skill 2 — Content Strategist*
+#### Skill 2 — Content Strategist
 
 You'll see a 6-week roadmap with titles and objectives. The arc follows:
 - **Week 1**: Hook (the pain point)
@@ -116,7 +116,7 @@ Say "looks good, proceed" or request changes before moving on.
 ---
 
 ### Stage 3: Wait for Drafts (5-10 minutes)
-*Skills 3, 4, 5 — Draft → Refine → Optimize*
+### Skills 3, 4, 5 — Draft → Refine → Optimize
 
 The system runs three sub-stages automatically:
 1. **Skill 3** writes initial 150-300 word drafts with anti-AI-ism rules applied
@@ -128,7 +128,7 @@ You don't need to do anything during this stage.
 ---
 
 ### Stage 4: HITL Checkpoint 5a — Review All 6 Posts (10-15 minutes)
-*Your most important input*
+#### Your most important input
 
 You'll see all 6 posts. For each one, respond with:
 
@@ -149,7 +149,7 @@ You'll see all 6 posts. For each one, respond with:
 ---
 
 ### Stage 5: Benchmark Review (3 minutes)
-*Skill 6 — Quality Reviewer + HITL 6a*
+#### Skill 6 — Quality Reviewer + HITL 6a
 
 You'll see a scorecard like this:
 
@@ -170,7 +170,7 @@ Say "approved" to proceed or request specific revisions.
 ---
 
 ### Stage 6: Archive + Publish
-*Skills 7 and 8*
+#### Skills 7 and 8
 
 **Archiving (automatic)**:
 Your full session is saved to `archive/[Topic]_[Date].md` and `.pdf`. This includes the intent document, roadmap, all 6 posts, and benchmark scores.
@@ -375,4 +375,5 @@ After each post, track impressions, reactions, and comments at 24 and 48 hours. 
 
 ---
 
-*Questions? See the README or open an issue at: https://github.com/taashim-eng/linkedin-thought-leadership-agent/issues*
+### Questions?
+See the README or open an issue: https://github.com/taashim-eng/linkedin-thought-leadership-agent/issues
