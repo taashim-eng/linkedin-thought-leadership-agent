@@ -23,23 +23,24 @@ first run.
 
 - Claude Code (CLI) or Manus AI
 - Any LLM assistant that supports Markdown skill files
-
 - A LinkedIn account (for publishing)
 - 30-60 minutes for your first run
 
 ### Step 1: Clone the Repository
 
 ```bash
+
 git clone https://github.com/taashim-eng/linkedin-thought-leadership-agent.git
 cd linkedin-thought-leadership-agent
 
-```
+```text
 
 ### Step 2: Install the Skills
 
-**For Claude Code**:
+### For Claude Code
 
 ```bash
+
 mkdir -p ~/.claude/skills/linkedin-agent
 cp skills/*.md ~/.claude/skills/linkedin-agent/
 
@@ -56,9 +57,10 @@ your platform's skill support.
 Open a new Claude Code session and type:
 
 ```text
+
 What LinkedIn thought leadership skills do you have available?
 
-```
+```text
 
 You should see the 9 skills listed (Master Orchestrator through Poster &
 Reviewer).
@@ -72,6 +74,7 @@ Reviewer).
 Type this to begin:
 
 ```text
+
 I want to create a 6-week LinkedIn thought leadership series on [YOUR TOPIC].
 
 ```
@@ -136,7 +139,7 @@ You'll see a 6-week roadmap with titles and objectives. The arc follows:
 - **Week 5**: Vision (future implications)
 - **Week 6**: Call (synthesize + CTA)
 
-**What to check**:
+### What to check
 
 - Do the titles feel like YOUR voice?
 - Is Week 3 using your actual anecdote?
@@ -174,7 +177,7 @@ Try starting with a question that challenges assumptions."
 **REJECT**: "Week 4 — Reject: This misses the technical audience entirely.
 Restart with more specific database examples."
 
-**Common revision patterns**:
+### Common revision patterns
 
 - "Sounds too corporate" → ask to re-invoke Skill 4 with more casual voice
 - "Too long" → ask to cut to 200 words
@@ -193,12 +196,12 @@ revision.
 You'll see a scorecard like this:
 
 | Post | Action | Voice | Depth | Cohesion | LinkedIn | Avg |
-|------|:---:|:---:|:---:|:---:|:---:|:---:|
+| ------ | :---: | :---: | :---: | :---: | :---: | :---: |
 | Week 1 | 4 | 5 | 4 | 5 | 5 | **4.6** |
 | Week 2 | 4 | 5 | 5 | 5 | 5 | **4.8** |
 ...
 
-**What to look for**:
+### What to look for
 
 - Any score below 3.0 → that post needs revision (mandatory flag)
 - Low Voice Consistency → re-invoke Skill 4
@@ -218,11 +221,11 @@ Say "approved" to proceed or request specific revisions.
 Your full session is saved to `archive/[Topic]_[Date].md` and `.pdf`. This
 includes the intent document, roadmap, all 6 posts, and benchmark scores.
 
-**Publishing**:
+### Publishing
 
 You'll be asked: *Option A (manual) or Option B (automated)?*
 
-**Option A — Manual (Recommended for first-timers)**:
+### Option A — Manual (Recommended for first-timers)
 
 1. Copy each post's text from the archive file
 2. Go to linkedin.com → Start a post → Paste
@@ -242,7 +245,7 @@ Each post has a corresponding HTML visual in `diagrams/`. Open in any browser
 and screenshot for LinkedIn.
 
 | Week | File | What It Shows |
-|------|------|--------------|
+| ------ | ------ | -------------- |
 | 1 | `week1_ai_usage_gap.html` | Split-screen Level 1 vs Level 3 |
 | 2 | `week2_ai_maturity_ladder.html` | 3-step maturity ladder with stats |
 | 3 | `week3_testing_before_after.html` | Before/after process flow |
@@ -274,7 +277,7 @@ What stays the same:
 
 - The benchmark rubric (frozen for consistency)
 
-**Best topics for this system**:
+### Best topics for this system
 
 - Topics where you have genuine personal experience
   (the anecdote is the strongest element)
@@ -284,7 +287,7 @@ What stays the same:
 
 - Topics with concrete, actionable advice for Week 4
 
-**Topics that need extra attention**:
+### Topics that need extra attention
 
 - Highly technical niche topics
   (voice refiner may over-simplify — request more technical language in HITL 5a)
@@ -300,25 +303,27 @@ For automated posting, configure the LinkedIn MCP server.
 
 ### One-Time Setup
 
-**Step 1: Install the package**
+### Step 1: Install the package
 
 ```bash
+
 npm install -g @ldraney/mcp-linkedin
 
-```
+```text
 
-**Step 2: Create a LinkedIn Developer App**
+### Step 2: Create a LinkedIn Developer App
 
 1. Go to <https://www.linkedin.com/developers/apps/new>
 2. Create an app, request "Share on LinkedIn" product
-3. Add redirect URI: `http://localhost:3000/callback`
+3. Add redirect URI: `<http://localhost:3000/callback`>
 4. Copy Client ID and Client Secret
 
-**Step 3: Run OAuth to get your access token**
+### Step 3: Run OAuth to get your access token
 
 Start a local server to capture the OAuth callback:
 
 ```javascript
+
 // Save as oauth_server.js and run: node oauth_server.js
 const http = require('http');
 const url = require('url');
@@ -336,16 +341,18 @@ http.createServer((req, res) => {
 Visit this URL in your browser (replace YOUR_CLIENT_ID):
 
 ```text
+
 https://www.linkedin.com/oauth/v2/authorization?
 response_type=code&client_id=YOUR_CLIENT_ID&
 redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback&
 scope=openid+profile+w_member_social
 
-```
+```text
 
 Exchange the code for a token:
 
 ```javascript
+
 const https = require('https');
 const qs = require('querystring');
 const body = qs.stringify({
@@ -361,11 +368,12 @@ const body = qs.stringify({
 
 ```
 
-**Step 4: Add to Claude Code settings**
+### Step 4: Add to Claude Code settings
 
 Edit `~/.claude/settings.json`:
 
 ```json
+
 {
   "mcpServers": {
     "linkedin": {
@@ -383,7 +391,7 @@ Edit `~/.claude/settings.json`:
   }
 }
 
-```
+```text
 
 **Step 5: Restart Claude Code** — MCP server loads on startup.
 
@@ -418,6 +426,7 @@ After Skill 2, request adjustments:
 Use the direct API instead (Option B2). This works without MCP:
 
 ```javascript
+
 // Post directly via LinkedIn API — see Skill 8 for full Node.js snippet
 // Status 201 = success. Response includes post URN for your publishing log.
 
@@ -435,10 +444,11 @@ posts.
 Install `md-to-pdf` globally:
 
 ```bash
+
 npm install -g md-to-pdf
 md-to-pdf archive/your_file.md
 
-```
+```text
 
 If npm is unavailable, open the `.md` file in VS Code and use "Markdown: Open
 Preview" → right-click → Print → Save as PDF.
@@ -450,7 +460,7 @@ Preview" → right-click → Print → Save as PDF.
 Recommended cadence for the 6-week series:
 
 | Week | Timing | Best Days | Best Time |
-|------|--------|-----------|-----------|
+| ------ | -------- | ----------- | ----------- |
 | 1 | Week 0 | Tuesday | 8-10am local |
 | 2 | +7 days | Thursday | 8-10am local |
 | 3 | +14 days | Tuesday | 8-10am local |
@@ -468,10 +478,13 @@ your audience.
 
 1. **Review engagement metrics** — Compare Week 1-6 performance. Which arc
    position (Hook, Tactics, Story) performed best?
+
 2. **Update your archive** — Add actual engagement metrics to the archive file
    for future reference
+
 3. **Plan the next series** — Use `outputs/2026_Roadmap_Plan.md` as a quarterly
    planning template
+
 4. **Improve the system** — If Week 5 consistently underperformed, update Skill
    3's Week 5 drafting instructions before the next run
 
