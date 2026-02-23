@@ -78,6 +78,9 @@ See [`benchmark/BENCHMARK_APPENDIX.md`](benchmark/BENCHMARK_APPENDIX.md) for ful
 
 ```
 ├── README.md                          # This file
+├── SETUP.md                           # Portable setup and run instructions
+├── EVALUATION_PROTOCOL.md             # Standardized rubric and rater workflow
+├── CONTRIBUTING.md                    # Contribution and documentation conventions
 ├── TUTORIAL_WRITEUP.md                # Full tutorial (assignment submission)
 ├── skills/
 │   ├── skill_0_master_orchestrator.md # Pipeline orchestration
