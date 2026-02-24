@@ -893,26 +893,24 @@ the process.
 
 Install the LinkedIn MCP package globally:
 
-```bash
+```
 
 npm install -g @ldraney/mcp-linkedin
 
-```
+```text
 
 Then add to your LLM's MCP configuration (e.g., `~/.claude/settings.json`):
-
-```json
 
 {
   "mcpServers": {
     "linkedin": {
-      "command":
-"C:\\Users\\<username>\\AppData\\Roaming\\npm\\mcp-linkedin.cmd",
+      "command": "mcp-linkedin",
+
       "args": [],
       "env": {
         "LINKEDIN_CLIENT_ID": "<your-client-id>",
         "LINKEDIN_CLIENT_SECRET": "<your-client-secret>",
-        "LINKEDIN_REDIRECT_URI": "<http://localhost:3000/callback",>
+        "LINKEDIN_REDIRECT_URI": "http://localhost:3000/callback",
         "LINKEDIN_API_VERSION": "202510",
         "LINKEDIN_ACCESS_TOKEN": "<your-access-token>",
         "LINKEDIN_PERSON_ID": "<your-person-id>"
@@ -921,13 +919,16 @@ Then add to your LLM's MCP configuration (e.g., `~/.claude/settings.json`):
   }
 }
 
-```text
+```
 
 ---
 
 ## Appendix A: Skill Prompts Reference
 
-### The full skill files are available in the GitHub repository at `skills/`. Below is a summary of each skill's core prompt logic and key instructions.
+### Skill files reference
+
+The full skill files are in `skills/`.
+This appendix summarizes each skill's core prompt logic.
 
 ### Skill 0: Master Orchestrator (`skill_0_master_orchestrator.md`)
 
@@ -949,13 +950,13 @@ Outputs a Strategic Intent Document. Uses one clarifying follow-up per vague ans
 
 Transforms the Strategic Intent into a 6-week roadmap following a fixed narrative arc:
 
-```
+```text
 
 Week 1: Hook (Pain Point) → Week 2: Framework (Mental Model) →
 Week 3: Story (Personal Anecdote) → Week 4: Tactics (Concrete Advice) →
 Week 5: Vision (Future Trends) → Week 6: Call (Synthesize + CTA)
 
-```text
+```
 
 Each week includes: Working Title, Objective, Key Content (2-3 bullets), "Coming Next Week" teaser.
 

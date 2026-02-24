@@ -1,14 +1,24 @@
 ---
 name: archive-manager
-description: Formats the complete session (intent, roadmap, posts, feedback, and benchmark scores) into a structured Markdown archive file AND a human-readable PDF for future reference and reproducibility.
+description: Formats complete sessions into archive Markdown and PDF outputs.
 ---
 
 # Skill 7: Archive Manager
 
 ## Overview
-Acts as a digital librarian. Packages the entire session — from the initial interview through the final approved posts — into a Markdown archive file AND a clean PDF version for easy human readability. Both files are saved to the `archive/` directory.
+
+Acts as a digital librarian.
+
+Packages the entire session, from the initial interview through the final
+approved posts, into:
+
+- A Markdown archive file.
+- A clean PDF version for human readability.
+
+Both files are saved to the `archive/` directory.
 
 ## Inputs
+
 - **Strategic Intent Document**: Output from Skill 1.
 - **6-Week Roadmap**: Output from Skill 2.
 - **Final Approved Posts**: Output from Skill 5 (after HITL 5a approval).
@@ -16,12 +26,16 @@ Acts as a digital librarian. Packages the entire session — from the initial in
 - **Feedback Log**: All user feedback from HITL checkpoints.
 
 ## Outputs
-- **Archive Markdown File**: `archive/[Topic_Slug]_[YYYY-MM-DD].md` — machine-readable, version-controlled.
-- **Archive PDF File**: `archive/[Topic_Slug]_[YYYY-MM-DD].pdf` — human-readable, printable, shareable.
+
+- **Archive Markdown File**:
+  `archive/[Topic_Slug]_[YYYY-MM-DD].md`.
+- **Archive PDF File**:
+  `archive/[Topic_Slug]_[YYYY-MM-DD].pdf`.
 
 ## Workflow
 
-### Step 1: Format the Archive
+### Step 1: Format the archive
+
 Create a Markdown file with this structure:
 
 ```markdown
@@ -63,42 +77,72 @@ Create a Markdown file with this structure:
 - **Total Iterations**: [count of revision cycles]
 ```
 
-### Step 2: Save the Markdown File
-Save to: `archive/[Topic_Slug]_[YYYY-MM-DD].md`
+### Step 2: Save the Markdown file
 
-Example: `archive/SQL_Query_Performance_2026-02-17.md`
+Save to:
 
-### Step 3: Generate the PDF Version
-Convert the archive Markdown to PDF using `md-to-pdf` (install if needed: `npm install -g md-to-pdf`):
+`archive/[Topic_Slug]_[YYYY-MM-DD].md`
+
+Example:
+
+`archive/SQL_Query_Performance_2026-02-17.md`
+
+### Step 3: Generate the PDF version
+
+Convert the archive Markdown to PDF using `md-to-pdf`.
+
+Install if needed:
+
+```bash
+npm install -g md-to-pdf
+```
+
+Generate:
 
 ```bash
 md-to-pdf archive/[Topic_Slug]_[YYYY-MM-DD].md
 ```
 
-This produces: `archive/[Topic_Slug]_[YYYY-MM-DD].pdf`
+This produces:
 
-**PDF formatting guidelines**:
-- Clean, readable typography (default md-to-pdf styles are appropriate)
-- Each week's post should start on a new section with clear heading
-- Tables (roadmap, benchmark) should render cleanly
+`archive/[Topic_Slug]_[YYYY-MM-DD].pdf`
 
-If `md-to-pdf` is unavailable, instruct the user to open the `.md` file in a markdown viewer (VS Code, Typora, Obsidian) and use **Print → Save as PDF**.
+PDF formatting guidelines:
 
-### Step 4: Confirm to User
+- Keep typography clean and readable.
+- Start each week's post on a clearly separated section.
+- Ensure tables render cleanly.
+
+If `md-to-pdf` is unavailable, instruct the user to open the `.md` file in a
+Markdown viewer (VS Code, Typora, Obsidian) and use **Print → Save as PDF**.
+
+### Step 4: Confirm to user
+
 Present a summary:
+
 > "Your 6-week series has been archived.
 > - Markdown: `archive/SQL_Query_Performance_2026-02-17.md`
 > - PDF: `archive/SQL_Query_Performance_2026-02-17.pdf`
 >
-> Both files contain your full session: intent, roadmap, all 6 posts, benchmark scores, and feedback log."
+> Both files contain your full session: intent, roadmap, all 6 posts,
+> benchmark scores, and feedback log."
 
 ## Constraints
-- Do NOT modify any content — archive exactly what was approved.
-- Include ALL metadata for reproducibility.
-- Use consistent file naming: `[Topic_Slug]_[YYYY-MM-DD].md` / `.pdf`
-- PDF is for human readability only — the `.md` is the canonical source of truth.
+
+- Do not modify content.
+- Archive exactly what was approved.
+- Include all metadata for reproducibility.
+- Use consistent naming:
+  `[Topic_Slug]_[YYYY-MM-DD].md` and `.pdf`.
+- Treat `.md` as canonical source of truth.
 
 ## Failure Modes
-- **Missing inputs**: If any input is missing (e.g., no benchmark was run), note it as "[Not Available]" in the archive rather than failing silently.
-- **md-to-pdf unavailable**: Fall back to manual print-to-PDF instructions.
-- **PDF rendering issues**: If tables or formatting break, open the `.md` in a browser-based renderer (e.g., GitHub) and print from there.
+
+- **Missing inputs**:
+  If any input is missing (for example no benchmark), write `[Not Available]`
+  instead of failing silently.
+- **`md-to-pdf` unavailable**:
+  Fall back to manual print-to-PDF instructions.
+- **PDF rendering issues**:
+  If tables break, open the `.md` in a browser-based renderer (for example
+  GitHub) and print from there.

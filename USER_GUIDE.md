@@ -33,7 +33,7 @@ first run.
 git clone https://github.com/taashim-eng/linkedin-thought-leadership-agent.git
 cd linkedin-thought-leadership-agent
 
-```text
+```
 
 ### Step 2: Install the Skills
 
@@ -60,7 +60,7 @@ Open a new Claude Code session and type:
 
 What LinkedIn thought leadership skills do you have available?
 
-```text
+```
 
 You should see the 9 skills listed (Master Orchestrator through Poster &
 Reviewer).
@@ -309,13 +309,13 @@ For automated posting, configure the LinkedIn MCP server.
 
 npm install -g @ldraney/mcp-linkedin
 
-```text
+```
 
 ### Step 2: Create a LinkedIn Developer App
 
 1. Go to <https://www.linkedin.com/developers/apps/new>
 2. Create an app, request "Share on LinkedIn" product
-3. Add redirect URI: `<http://localhost:3000/callback`>
+3. Add redirect URI: <http://localhost:3000/callback>
 4. Copy Client ID and Client Secret
 
 ### Step 3: Run OAuth to get your access token
@@ -347,7 +347,7 @@ response_type=code&client_id=YOUR_CLIENT_ID&
 redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback&
 scope=openid+profile+w_member_social
 
-```text
+```
 
 Exchange the code for a token:
 
@@ -391,7 +391,7 @@ Edit `~/.claude/settings.json`:
   }
 }
 
-```text
+```
 
 **Step 5: Restart Claude Code** — MCP server loads on startup.
 
@@ -448,7 +448,7 @@ Install `md-to-pdf` globally:
 npm install -g md-to-pdf
 md-to-pdf archive/your_file.md
 
-```text
+```
 
 If npm is unavailable, open the `.md` file in VS Code and use "Markdown: Open
 Preview" → right-click → Print → Save as PDF.
