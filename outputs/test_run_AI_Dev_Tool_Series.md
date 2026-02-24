@@ -1,10 +1,13 @@
 # Test Run: From AI Chatbot to AI Dev Partner (6-Week Series)
+
 ## Strategic Intent: IT Moving from Using AI as a Search Chatbot to a Dev Tool
+
 ## Date: 2026-02-11
 
 ---
 
 ## Week 1: "Your Team Is Using AI Wrong"
+
 **Arc Position**: The Hook — surface a pain point
 
 ---
@@ -15,7 +18,7 @@ Your developers are using ChatGPT to Google things faster. Your managers are usi
 
 Here's the uncomfortable truth: if your team's primary use of AI is "ask it a question and read the answer," you haven't adopted AI. You've adopted a search engine with better grammar.
 
-The gap between teams that use AI to *ask questions* and teams that use AI to *write, test, and ship code* is widening every quarter. One group is getting incrementally faster at finding answers. The other is fundamentally changing how software gets built.
+The gap between teams that use AI to _ask questions_ and teams that use AI to _write, test, and ship code_ is widening every quarter. One group is getting incrementally faster at finding answers. The other is fundamentally changing how software gets built.
 
 I've watched this play out across multiple teams. The ones still treating AI as a chatbot aren't falling behind slowly — they're standing still while the ground moves under them.
 
@@ -23,7 +26,7 @@ The question isn't whether your team uses AI. It's whether they use it for anyth
 
 **Insight**: AI adoption isn't a binary. Most teams are stuck at Level 1 — and they don't even know there are levels.
 
-**CTA**: Ask your developers one question this week: "What did AI help you *build* last sprint?" If the answer is "nothing" — that's your signal.
+**CTA**: Ask your developers one question this week: "What did AI help you _build_ last sprint?" If the answer is "nothing" — that's your signal.
 
 #AIinIT #SoftwareDevelopment #DevProductivity #AIAdoption #AIDevPartner
 
@@ -44,6 +47,7 @@ The question isn't whether your team uses AI. It's whether they use it for anyth
 ---
 
 ## Week 2: "The AI Maturity Ladder: Chat → Copilot → Partner"
+
 **Arc Position**: The Framework — introduce a mental model
 
 ---
@@ -88,6 +92,7 @@ The jump from Level 2 to Level 3 is where the real transformation happens — an
 ---
 
 ## Week 3: "How AI Fixed Our Testing Problem"
+
 **Arc Position**: The Story — personal anecdote
 
 ---
@@ -104,7 +109,7 @@ Instead of asking AI "how do I write a test for this function," we embedded it i
 
 The shift was immediate. Testing stopped being a phase that happens after development. It became part of development. Every commit, every PR, every merge — tested. Not because someone remembered to run the suite, but because AI made it automatic.
 
-The developers who hated testing? They stopped hating it. Because they weren't doing it anymore. They were *reviewing* it.
+The developers who hated testing? They stopped hating it. Because they weren't doing it anymore. They were _reviewing_ it.
 
 **Insight**: AI didn't replace our testers. It replaced the reason developers avoided testing — the tedium.
 
@@ -121,17 +126,21 @@ The developers who hated testing? They stopped hating it. Because they weren't d
 **Diagram Description**: A before/after flow diagram:
 
 - **Before (left, red/orange tones)**:
+
   ```
   Developer writes code → Throws over wall → Tester writes tests →
   Finds bugs 2 weeks later → Developer context-switches back → Fixes → Repeat
   ```
+
   Label: "The Old Way: Testing as an afterthought"
 
 - **After (right, green/blue tones)**:
+
   ```
   Developer writes code → AI generates test cases → AI executes tests →
   AI presents results + options → Human reviews & approves → Merge
   ```
+
   Label: "The New Way: Testing embedded in every commit"
 
 - **Center callout**: "Time from code to tested: 2 weeks → 2 minutes"
@@ -141,6 +150,7 @@ The developers who hated testing? They stopped hating it. Because they weren't d
 ---
 
 ## Week 4: "5 Ways to Move Your Team from Chat to IDE"
+
 **Arc Position**: The Tactics — concrete actionable advice
 
 ---
@@ -176,13 +186,13 @@ When someone on your team ships something faster or catches a bug they'd have mi
 
 **Diagram Description**: A numbered checklist-style infographic with 5 rows:
 
-| # | Move | Icon |
-|---|------|------|
-| 1 | Standardize one AI-native IDE | IDE window icon |
-| 2 | Start with testing (low resistance) | Checkmark/test tube icon |
-| 3 | Create an "AI Lab" sandbox | Flask/lab icon |
-| 4 | Measure before & after (30/60 days) | Chart/graph icon |
-| 5 | Celebrate the first win publicly | Megaphone/trophy icon |
+| #   | Move                                | Icon                     |
+| --- | ----------------------------------- | ------------------------ |
+| 1   | Standardize one AI-native IDE       | IDE window icon          |
+| 2   | Start with testing (low resistance) | Checkmark/test tube icon |
+| 3   | Create an "AI Lab" sandbox          | Flask/lab icon           |
+| 4   | Measure before & after (30/60 days) | Chart/graph icon         |
+| 5   | Celebrate the first win publicly    | Megaphone/trophy icon    |
 
 - Left column: big bold numbers (1-5)
 - Middle: action statement
@@ -195,6 +205,7 @@ When someone on your team ships something faster or catches a bug they'd have mi
 ---
 
 ## Week 5: "The AI-Native Dev Team of 2027"
+
 **Arc Position**: The Vision — connect to the future
 
 ---
@@ -230,12 +241,14 @@ The teams still debating whether to buy Copilot licenses will be competing again
 **Diagram Description**: A timeline comparison showing the evolution of a dev team's daily workflow:
 
 **2024 Column (left, muted)**:
+
 - Code Review: Human reads every line → 2-3 days
 - Testing: Separate phase → 1-2 week cycles
 - Documentation: "We'll do it later" → perpetually outdated
 - Onboarding: Shadow a senior dev → 3 months
 
 **2027 Column (right, vibrant)**:
+
 - Code Review: AI pre-reviews, human approves → 2-3 hours
 - Testing: Continuous, AI-generated → every commit
 - Documentation: Auto-generated from code → always current
@@ -248,6 +261,7 @@ The teams still debating whether to buy Copilot licenses will be competing again
 ---
 
 ## Week 6: "Stop Asking AI Questions. Start Building With It."
+
 **Arc Position**: The Call — synthesize and drive CTA
 
 ---
@@ -265,6 +279,7 @@ Here's what we've covered:
 The common thread: **this isn't about the technology.** Every team has access to the same tools. The difference is whether leadership creates the space to use them differently.
 
 You don't need a 6-month AI transformation roadmap. You need:
+
 - One IDE with AI built in
 - One safe repo to experiment in
 - One sprint where trying something new is celebrated, not questioned
@@ -304,6 +319,7 @@ Week 1          Week 2          Week 3          Week 4          Week 5          
 ---
 
 ## Session Metadata
+
 - **Pipeline**: Skills 1→2→3→4→5 (Phase 1-3 complete)
 - **Strategic Intent**: Captured
 - **Roadmap**: 6-week arc validated

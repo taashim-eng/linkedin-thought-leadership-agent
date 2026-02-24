@@ -5,6 +5,7 @@ Thanks for contributing to this project.
 ## Development Scope
 
 This repository is documentation- and skills-driven. Most contributions will touch:
+
 - skill definitions under `skills/`
 - benchmark/evaluation docs
 - setup and workflow documentation

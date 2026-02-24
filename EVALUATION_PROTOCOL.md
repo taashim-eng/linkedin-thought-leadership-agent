@@ -5,6 +5,7 @@ This protocol standardizes quality evaluation for generated 6-week LinkedIn seri
 ## 1) Purpose
 
 Ensure repeatable and comparable scoring across runs by using:
+
 - Fixed rubric dimensions
 - Clear scoring anchors
 - Documented rater workflow
@@ -12,6 +13,7 @@ Ensure repeatable and comparable scoring across runs by using:
 ## 2) Unit of Evaluation
 
 Evaluate one completed 6-week series (Weeks 1-6) after:
+
 - HITL 5a content review
 - HITL 6a benchmark pass
 
@@ -20,26 +22,31 @@ Evaluate one completed 6-week series (Weeks 1-6) after:
 Score each dimension from **1 (poor)** to **5 (excellent)**.
 
 ### A) Actionability
+
 - **1**: Mostly abstract, no practical next steps.
 - **3**: Some specific advice, uneven execution.
 - **5**: Concrete, immediately usable guidance throughout.
 
 ### B) Voice Consistency
+
 - **1**: Generic AI tone, inconsistent persona.
 - **3**: Mixed voice; some sections feel authentic.
 - **5**: Strong, coherent, human voice across all posts.
 
 ### C) Strategic Depth
+
 - **1**: Surface-level ideas only.
 - **3**: Moderate insight but limited nuance.
 - **5**: High-signal, nuanced reasoning with meaningful perspective.
 
 ### D) Narrative Cohesion
+
 - **1**: Disconnected weekly posts.
 - **3**: Partial arc with weak transitions.
 - **5**: Clear progressive arc across all six weeks.
 
 ### E) LinkedIn Optimization
+
 - **1**: Poor hooks/formatting/CTA fit.
 - **3**: Adequate platform fit.
 - **5**: Strong hooks, scannability, CTA quality, and platform-native structure.
@@ -72,13 +79,13 @@ Use this template in benchmark notes:
 - Date: <yyyy-mm-dd>
 - Confidence: <High|Medium|Low>
 
-| Dimension | Score (1-5) | Notes |
-|-----------|-------------|-------|
-| Actionability |  |  |
-| Voice Consistency |  |  |
-| Strategic Depth |  |  |
-| Narrative Cohesion |  |  |
-| LinkedIn Optimization |  |  |
+| Dimension             | Score (1-5) | Notes |
+| --------------------- | ----------- | ----- |
+| Actionability         |             |       |
+| Voice Consistency     |             |       |
+| Strategic Depth       |             |       |
+| Narrative Cohesion    |             |       |
+| LinkedIn Optimization |             |       |
 
 - Overall Score (mean):
 - Key strengths:
@@ -89,6 +96,7 @@ Use this template in benchmark notes:
 ## 7) Acceptance Thresholds
 
 Default benchmark gate:
+
 - No dimension below **3.0**
 - Overall mean at or above **4.0** for target-quality publish readiness
 

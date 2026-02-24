@@ -89,9 +89,9 @@ The system is a **sequential pipeline** with 9 specialized skills, coordinated
 by a Master Orchestrator (Skill 0). Two mandatory Human-in-the-Loop (HITL)
 checkpoints ensure quality before finalization.
 
-**Figure 1: Solution Architecture** *(open
+**Figure 1: Solution Architecture** _(open
 `diagrams/architecture_infographic.html` in a browser for the full interactive
-diagram)*
+diagram)_
 
 ```text
 
@@ -119,19 +119,20 @@ phases, maintaining session state and enforcing gates between each phase.
 
 ### 2.2 All 9 Skills
 
-| # | Skill | Purpose | Key Innovation |
-| --- | ------- | --------- | --------------- |
-| 0 | **Master Orchestrator** | Sequences skills + enforces HITL gates | State + recovery |
-| 1 | **Intent Discovery** | 5-question strategic interview | Voice/audience extraction |
-| 2 | **Content Strategist** | Builds 6-week narrative arc | Hook→Framework→Story→Tactics→Vision→Call |
-| 3 | **Draft Architect** | Generates 150-300 word drafts | Anti-AI-ism rules |
-| 4 | **Voice & Tone Refiner** | Matches leader voice | AI pattern replacement |
-| 5 | **Engagement Optimizer** | LinkedIn formatting + **HITL 5a** | Platform optimization |
-| 6 | **Quality Reviewer** | 5-metric benchmark + **HITL 6a** | Scoring + failure flags |
-| 7 | **Archive Manager** | Packages session to Markdown | Reproducible outputs |
-| 8 | **Poster & Reviewer** | Publishes via MCP or API | Direct LinkedIn integration |
+| #   | Skill                    | Purpose                                | Key Innovation                           |
+| --- | ------------------------ | -------------------------------------- | ---------------------------------------- |
+| 0   | **Master Orchestrator**  | Sequences skills + enforces HITL gates | State + recovery                         |
+| 1   | **Intent Discovery**     | 5-question strategic interview         | Voice/audience extraction                |
+| 2   | **Content Strategist**   | Builds 6-week narrative arc            | Hook→Framework→Story→Tactics→Vision→Call |
+| 3   | **Draft Architect**      | Generates 150-300 word drafts          | Anti-AI-ism rules                        |
+| 4   | **Voice & Tone Refiner** | Matches leader voice                   | AI pattern replacement                   |
+| 5   | **Engagement Optimizer** | LinkedIn formatting + **HITL 5a**      | Platform optimization                    |
+| 6   | **Quality Reviewer**     | 5-metric benchmark + **HITL 6a**       | Scoring + failure flags                  |
+| 7   | **Archive Manager**      | Packages session to Markdown           | Reproducible outputs                     |
+| 8   | **Poster & Reviewer**    | Publishes via MCP or API               | Direct LinkedIn integration              |
 
 ### Skill files: `skills/skill_0_master_orchestrator.md` through
+
 `skills/skill_8_poster_reviewer.md`
 
 ### 2.3 Pipeline Flow
@@ -225,17 +226,17 @@ User Input (Topic)
 
 ### 3.1 Tools & Timeline
 
-| Step | Activity | Tool | Time |
-| ------ | --------- | ------ | ------ |
-| 1 | Research best practices and skill format | Web research + Claude docs | 45 min |
-| 2 | Design pipeline architecture | Mermaid + whiteboard sketching | 1 hr |
-| 3 | Write Skills 0-7 (first draft) | Manus AI + manual editing | 2 hrs |
-| 4 | Test pipeline end-to-end on SQL topic | Manus AI orchestration | 1.5 hrs |
-| 5 | Iterate on Skills 3-4 (voice issues) | Manual prompt refinement | 1 hr |
-| 6 | Add Skill 8 (LiGo MCP integration) | LiGo MCP documentation | 30 min |
-| 7 | Run second test case (Data Cleanliness) | Manus AI | 45 min |
-| 8 | Design benchmark, run scoring | Manual evaluation | 1 hr |
-| **Total** |  |  | **~8.5 hrs** |
+| Step      | Activity                                 | Tool                           | Time         |
+| --------- | ---------------------------------------- | ------------------------------ | ------------ |
+| 1         | Research best practices and skill format | Web research + Claude docs     | 45 min       |
+| 2         | Design pipeline architecture             | Mermaid + whiteboard sketching | 1 hr         |
+| 3         | Write Skills 0-7 (first draft)           | Manus AI + manual editing      | 2 hrs        |
+| 4         | Test pipeline end-to-end on SQL topic    | Manus AI orchestration         | 1.5 hrs      |
+| 5         | Iterate on Skills 3-4 (voice issues)     | Manual prompt refinement       | 1 hr         |
+| 6         | Add Skill 8 (LiGo MCP integration)       | LiGo MCP documentation         | 30 min       |
+| 7         | Run second test case (Data Cleanliness)  | Manus AI                       | 45 min       |
+| 8         | Design benchmark, run scoring            | Manual evaluation              | 1 hr         |
+| **Total** |                                          |                                | **~8.5 hrs** |
 
 ### 3.2 Key Bottlenecks
 
@@ -438,6 +439,7 @@ See full posts in the output file.
 | Q5: Tone | Provocative + Educational |
 
 **Output (Week 1 — Final Post)**:
+
 > Is your data platform actually "good enough," or is it just holding you back?
 >
 > Traditional SQL performance is no longer a technical detail — it's a strategic
@@ -460,8 +462,8 @@ See full posts in the output file.
 > Coming Next Week: Why "instant satisfaction" is now a data engineering
 > requirement.
 
-**Figure 2: Week 1 Post Published Live on LinkedIn** *(from Run 3 — AI Chatbot
-to Dev Tool series, URN: `urn:li:share:7430329696413843458`)*
+**Figure 2: Week 1 Post Published Live on LinkedIn** _(from Run 3 — AI Chatbot
+to Dev Tool series, URN: `urn:li:share:7430329696413843458`)_
 
 ![LinkedIn Post Screenshot](diagrams/Week%201.png)
 
@@ -564,6 +566,7 @@ Performance). The zero-revision HITL result and strong Week 2-3 scores (both
 | Q5: Tone | Provocative + Educational |
 
 **Output (Week 1 — Final Post)**:
+
 > Most IT teams spent 2024 rolling out AI. The result? Expensive autocomplete.
 >
 > Your developers are using ChatGPT to Google things faster. Your managers are
@@ -573,8 +576,8 @@ Performance). The zero-revision HITL result and strong Week 2-3 scores (both
 > question and read the answer," you haven't adopted AI. You've adopted a search
 > engine with better grammar.
 >
-> The gap between teams that use AI to *ask questions* and teams that use AI to
-> *write, test, and ship code* is widening every quarter. One group is getting
+> The gap between teams that use AI to _ask questions_ and teams that use AI to
+> _write, test, and ship code_ is widening every quarter. One group is getting
 > incrementally faster at finding answers. The other is fundamentally changing
 > how software gets built.
 >
@@ -649,6 +652,7 @@ the pattern observed in all previous runs.
 | Q5: Tone | Provocative + Educational |
 
 **Output (Week 3 — Final Post)**:
+
 > We had just finished building a new data platform in Azure.
 >
 > Azure OpenAI was available. Azure AI Foundry was configured. The tools were
@@ -682,14 +686,14 @@ the pattern observed in all previous runs.
 **Publishing Log (Run 4)** — All 6 posts published live to LinkedIn on
 2026-02-21:
 
-| Wk | Title | Status |
-| ---- | ------- | -------- |
-| 1 | "Your Data Engineers Are Using AI Like It's 2023" | LIVE |
-| 2 | "The Agentic Data Stack: Architecture That Actually Works" | LIVE |
-| 3 | "We Had Azure OpenAI. Nobody Used It Right." | LIVE |
-| 4 | "5 Safeguards Before Deploying AI Agents" | LIVE |
-| 5 | "The 2027 Data Team: Fewer Tickets, More Architecture" | LIVE |
-| 6 | "Stop Chatting With AI. Start Architecting With It." | LIVE |
+| Wk  | Title                                                      | Status |
+| --- | ---------------------------------------------------------- | ------ |
+| 1   | "Your Data Engineers Are Using AI Like It's 2023"          | LIVE   |
+| 2   | "The Agentic Data Stack: Architecture That Actually Works" | LIVE   |
+| 3   | "We Had Azure OpenAI. Nobody Used It Right."               | LIVE   |
+| 4   | "5 Safeguards Before Deploying AI Agents"                  | LIVE   |
+| 5   | "The 2027 Data Team: Fewer Tickets, More Architecture"     | LIVE   |
+| 6   | "Stop Chatting With AI. Start Architecting With It."       | LIVE   |
 
 LinkedIn URNs: `urn:li:share:7431126731257958400` through
 `urn:li:share:7431126784642834432`.
@@ -697,15 +701,15 @@ Full URN list in `archive/Agentic_AI_Data_Engineering_2026-02-21.md`.
 
 ### Figure 3: Benchmark Scorecard — Run 4 (Agentic AI for Data Engineering)
 
-| Post | Actionability | Voice | Depth | Cohesion | LinkedIn | **Avg** |
-| ------ | :---: | :---: | :---: | :---: | :---: | :---: |
-| Week 1 | 3.5 | 4.5 | 4.0 | 4.5 | 4.5 | **4.2** |
-| Week 2 | 4.5 | 4.0 | 4.5 | 4.5 | 4.0 | **4.3** |
-| Week 3 | 4.0 | 5.0 | 4.5 | 5.0 | 4.5 | **4.6** |
-| Week 4 | 5.0 | 4.5 | 4.5 | 4.5 | 4.5 | **4.6** |
-| Week 5 | 3.0 | 4.0 | 3.5 | 4.5 | 4.0 | **3.8** |
-| Week 6 | 5.0 | 4.5 | 4.0 | 5.0 | 4.5 | **4.6** |
-| **Avg** | **4.2** | **4.4** | **4.2** | **4.7** | **4.3** | **4.35** |
+| Post    | Actionability |  Voice  |  Depth  | Cohesion | LinkedIn | **Avg**  |
+| ------- | :-----------: | :-----: | :-----: | :------: | :------: | :------: |
+| Week 1  |      3.5      |   4.5   |   4.0   |   4.5    |   4.5    | **4.2**  |
+| Week 2  |      4.5      |   4.0   |   4.5   |   4.5    |   4.0    | **4.3**  |
+| Week 3  |      4.0      |   5.0   |   4.5   |   5.0    |   4.5    | **4.6**  |
+| Week 4  |      5.0      |   4.5   |   4.5   |   4.5    |   4.5    | **4.6**  |
+| Week 5  |      3.0      |   4.0   |   3.5   |   4.5    |   4.0    | **3.8**  |
+| Week 6  |      5.0      |   4.5   |   4.0   |   5.0    |   4.5    | **4.6**  |
+| **Avg** |    **4.2**    | **4.4** | **4.2** | **4.7**  | **4.3**  | **4.35** |
 
 ---
 
@@ -715,8 +719,8 @@ Full URN list in `archive/Agentic_AI_Data_Engineering_2026-02-21.md`.
 
 **Approach**: Human Rubric Scoring (Method 1) + Baseline Comparison (Method 3)
 
-**Baseline**: Single-prompt GPT-4 request: *"Write 6 LinkedIn posts about SQL
-Query Performance for Data Engineers and Business Stakeholders."*
+**Baseline**: Single-prompt GPT-4 request: _"Write 6 LinkedIn posts about SQL
+Query Performance for Data Engineers and Business Stakeholders."_
 
 **5 Metrics** (each scored 1-5):
 
@@ -737,14 +741,14 @@ Chatbot to Dev Tool), 1 edge case (highly technical topic), 1 ambiguous case
 
 ### Figure 4: Aggregate Benchmark Results Across All Test Cases
 
-| Test Case | Agentic Score | Baseline Score | Delta |
-| ----------- | :---: | :---: | :---: |
-| SQL Performance | **4.5** | 2.0 | +2.5 |
-| Data Cleanliness | **4.2** | — | — |
-| AI Chatbot to Dev Tool | **4.5** | — | — |
-| Edge: Technical Topic | **3.4** | — | — |
-| Ambiguous: Vague Input | **3.6** | — | — |
-| Agentic AI for Data Engineering | **4.35** | — | — |
+| Test Case                       | Agentic Score | Baseline Score | Delta |
+| ------------------------------- | :-----------: | :------------: | :---: |
+| SQL Performance                 |    **4.5**    |      2.0       | +2.5  |
+| Data Cleanliness                |    **4.2**    |       —        |   —   |
+| AI Chatbot to Dev Tool          |    **4.5**    |       —        |   —   |
+| Edge: Technical Topic           |    **3.4**    |       —        |   —   |
+| Ambiguous: Vague Input          |    **3.6**    |       —        |   —   |
+| Agentic AI for Data Engineering |   **4.35**    |       —        |   —   |
 
 **Biggest win**: Narrative Cohesion — the baseline scored 1.0 (posts are
 disconnected), the agentic system averaged 4.8 across standard test cases (posts
@@ -859,7 +863,8 @@ tuned.
 1. **Clone the repository**:
    ```bash
    git clone
-<https://github.com/taashim-eng/linkedin-thought-leadership-agent.git>
+   <https://github.com/taashim-eng/linkedin-thought-leadership-agent.git>
+   ```
 
 ```text
 
@@ -871,8 +876,8 @@ tuned.
 
 ```
 
-   I want to create a 6-week LinkedIn thought leadership series on [YOUR TOPIC].
-   Please use the LinkedIn Thought Leadership Orchestrator to guide me through
+I want to create a 6-week LinkedIn thought leadership series on [YOUR TOPIC].
+Please use the LinkedIn Thought Leadership Orchestrator to guide me through
 the process.
 
 ```text
@@ -966,7 +971,7 @@ Generates 6 initial drafts (150-300 words) with structure: Hook (<200 chars) →
 
 ### Skill 4: Voice & Tone Refiner (`skill_4_voice_tone_refiner.md`)
 
-Acts as ghostwriter. Four-step process: (1) Remove AI-isms via detection table, (2) Add professional weight ("Time-to-market" not "getting things done quickly"), (3) Match tone to specified style, (4) Ensure authority via active voice and first-person ("I," "we"). Core instruction: *"Do not change the core message or structure. Do not make posts longer."*
+Acts as ghostwriter. Four-step process: (1) Remove AI-isms via detection table, (2) Add professional weight ("Time-to-market" not "getting things done quickly"), (3) Match tone to specified style, (4) Ensure authority via active voice and first-person ("I," "we"). Core instruction: _"Do not change the core message or structure. Do not make posts longer."_
 
 ### Skill 5: Engagement Optimizer (`skill_5_engagement_optimizer.md`)
 

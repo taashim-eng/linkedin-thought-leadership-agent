@@ -40,11 +40,13 @@ Create a Markdown file with this structure:
 
 ```markdown
 # [Topic Title] — LinkedIn Thought Leadership Series
-**Created**: [Date]  |  **Quarter**: [Q1/Q2/Q3/Q4 Year]  |  **Status**: Approved
+
+**Created**: [Date] | **Quarter**: [Q1/Q2/Q3/Q4 Year] | **Status**: Approved
 
 ---
 
 ## Strategic Intent
+
 - **Audience**: [from Skill 1]
 - **Core Message**: [from Skill 1]
 - **Personal Anecdote**: [from Skill 1]
@@ -52,26 +54,32 @@ Create a Markdown file with this structure:
 - **Tone**: [from Skill 1]
 
 ## 6-Week Roadmap
+
 [Table from Skill 2]
 
 ## Final Posts
 
 ### Week 1: [Title]
+
 [Full post text]
 
 ### Week 2: [Title]
+
 [Full post text]
 
 [...repeat for all 6 weeks]
 
 ## Benchmark Results
+
 [Scorecard table from Skill 6]
 
 ## User Feedback Log
+
 - **HITL 5a**: [Summary of feedback and changes made]
 - **HITL 6a**: [Summary of benchmark review and approval]
 
 ## Metadata
+
 - **Skills Used**: 1-7 (+ 8 if published)
 - **LLM Platform**: [e.g., Claude, Manus, GPT-4]
 - **Total Iterations**: [count of revision cycles]
@@ -121,6 +129,7 @@ Markdown viewer (VS Code, Typora, Obsidian) and use **Print → Save as PDF**.
 Present a summary:
 
 > "Your 6-week series has been archived.
+>
 > - Markdown: `archive/SQL_Query_Performance_2026-02-17.md`
 > - PDF: `archive/SQL_Query_Performance_2026-02-17.pdf`
 >

@@ -92,36 +92,41 @@ You'll be asked 5 questions. Answer them honestly and specifically — the quali
 of your answers directly determines the quality of your posts.
 
 **Q1 — Target Audience**
+
 > "Who is the primary audience for this series?"
 
-*Good answer*: "Data Engineers and Business Stakeholders at mid-size tech
+_Good answer_: "Data Engineers and Business Stakeholders at mid-size tech
 companies"
-*Weak answer*: "Tech people"
+_Weak answer_: "Tech people"
 
 **Q2 — Core Message**
+
 > "If your readers remember only ONE thing, what should it be?"
 
-*Good answer*: "Continuous improvement in SQL is essential for AI-readiness"
-*Weak answer*: "SQL is important"
+_Good answer_: "Continuous improvement in SQL is essential for AI-readiness"
+_Weak answer_: "SQL is important"
 
 **Q3 — Personal Anecdote**
+
 > "Can you share a real-world experience related to this topic?"
 
-*Good answer*: "Our business team was frustrated when their dashboards were 24
+_Good answer_: "Our business team was frustrated when their dashboards were 24
 hours behind reality — the root cause was slow SQL queries that couldn't keep up
 with our data volume"
-*Weak answer*: "I've worked with SQL a lot"
+_Weak answer_: "I've worked with SQL a lot"
 
 **Tip**: If you skip Q3 (the anecdote), Week 3 will be weaker. The personal
 story is what separates your series from generic AI content.
 
 **Q4 — Call to Action**
+
 > "What do you want readers to DO after reading?"
 
 Make this specific: "Run an EXPLAIN ANALYZE on their top 3 slowest queries"
 beats "think about performance".
 
 **Q5 — Tone**
+
 > Choose: Provocative / Educational / Empathetic / Data-driven (or combine)
 
 ---
@@ -195,10 +200,11 @@ revision.
 
 You'll see a scorecard like this:
 
-| Post | Action | Voice | Depth | Cohesion | LinkedIn | Avg |
-| ------ | :---: | :---: | :---: | :---: | :---: | :---: |
-| Week 1 | 4 | 5 | 4 | 5 | 5 | **4.6** |
-| Week 2 | 4 | 5 | 5 | 5 | 5 | **4.8** |
+| Post   | Action | Voice | Depth | Cohesion | LinkedIn |   Avg   |
+| ------ | :----: | :---: | :---: | :------: | :------: | :-----: |
+| Week 1 |   4    |   5   |   4   |    5     |    5     | **4.6** |
+| Week 2 |   4    |   5   |   5   |    5     |    5     | **4.8** |
+
 ...
 
 ### What to look for
@@ -223,7 +229,7 @@ includes the intent document, roadmap, all 6 posts, and benchmark scores.
 
 ### Publishing
 
-You'll be asked: *Option A (manual) or Option B (automated)?*
+You'll be asked: _Option A (manual) or Option B (automated)?_
 
 ### Option A — Manual (Recommended for first-timers)
 
@@ -244,14 +250,14 @@ configuration.
 Each post has a corresponding HTML visual in `diagrams/`. Open in any browser
 and screenshot for LinkedIn.
 
-| Week | File | What It Shows |
-| ------ | ------ | -------------- |
-| 1 | `week1_ai_usage_gap.html` | Split-screen Level 1 vs Level 3 |
-| 2 | `week2_ai_maturity_ladder.html` | 3-step maturity ladder with stats |
-| 3 | `week3_testing_before_after.html` | Before/after process flow |
-| 4 | `week4_five_moves.html` | 5-step action list |
-| 5 | `week5_2024_vs_2027.html` | 4-dimension comparison table |
-| 6 | `week6_series_journey.html` | Full 6-week journey map |
+| Week | File                              | What It Shows                     |
+| ---- | --------------------------------- | --------------------------------- |
+| 1    | `week1_ai_usage_gap.html`         | Split-screen Level 1 vs Level 3   |
+| 2    | `week2_ai_maturity_ladder.html`   | 3-step maturity ladder with stats |
+| 3    | `week3_testing_before_after.html` | Before/after process flow         |
+| 4    | `week4_five_moves.html`           | 5-step action list                |
+| 5    | `week5_2024_vs_2027.html`         | 4-dimension comparison table      |
+| 6    | `week6_series_journey.html`       | Full 6-week journey map           |
 
 **To screenshot on Windows**: Win+Shift+S → select the browser window → save as
 PNG.
@@ -323,19 +329,21 @@ npm install -g @ldraney/mcp-linkedin
 Start a local server to capture the OAuth callback:
 
 ```javascript
-
 // Save as oauth_server.js and run: node oauth_server.js
-const http = require('http');
-const url = require('url');
-const fs = require('fs');
-http.createServer((req, res) => {
-  const parsed = url.parse(req.url, true);
-  if (parsed.query.code) {
-    fs.writeFileSync('auth_code.txt', parsed.query.code);
-    res.end('<h1>Success! Close this tab.</h1>');
-  } else { res.end('Waiting...'); }
-}).listen(3000);
-
+const http = require("http");
+const url = require("url");
+const fs = require("fs");
+http
+  .createServer((req, res) => {
+    const parsed = url.parse(req.url, true);
+    if (parsed.query.code) {
+      fs.writeFileSync("auth_code.txt", parsed.query.code);
+      res.end("<h1>Success! Close this tab.</h1>");
+    } else {
+      res.end("Waiting...");
+    }
+  })
+  .listen(3000);
 ```
 
 Visit this URL in your browser (replace YOUR_CLIENT_ID):
@@ -352,20 +360,18 @@ scope=openid+profile+w_member_social
 Exchange the code for a token:
 
 ```javascript
-
-const https = require('https');
-const qs = require('querystring');
+const https = require("https");
+const qs = require("querystring");
 const body = qs.stringify({
-  grant_type: 'authorization_code',
-  code: 'YOUR_AUTH_CODE',
-  redirect_uri: 'http://localhost:3000/callback',
-  client_id: 'YOUR_CLIENT_ID',
-  client_secret: 'YOUR_CLIENT_SECRET'
+  grant_type: "authorization_code",
+  code: "YOUR_AUTH_CODE",
+  redirect_uri: "http://localhost:3000/callback",
+  client_id: "YOUR_CLIENT_ID",
+  client_secret: "YOUR_CLIENT_SECRET",
 });
 // POST to https://www.linkedin.com/oauth/v2/accessToken
 // Response includes access_token and id_token
 // (contains person ID in 'sub' field)
-
 ```
 
 ### Step 4: Add to Claude Code settings
@@ -373,7 +379,6 @@ const body = qs.stringify({
 Edit `~/.claude/settings.json`:
 
 ```json
-
 {
   "mcpServers": {
     "linkedin": {
@@ -390,7 +395,6 @@ Edit `~/.claude/settings.json`:
     }
   }
 }
-
 ```
 
 **Step 5: Restart Claude Code** — MCP server loads on startup.
@@ -404,6 +408,7 @@ Edit `~/.claude/settings.json`:
 ### "The post sounds like AI"
 
 Re-invoke Skill 4 with explicit feedback:
+
 > "Re-run Skill 4 on Week 2. The phrase 'navigating the complex landscape' is an
 > AI pattern. Replace it with a specific example. The tone should be more direct
 > — less corporate."
@@ -411,6 +416,7 @@ Re-invoke Skill 4 with explicit feedback:
 ### "Week 5 is weak"
 
 Week 5 (Vision) is the consistently weak spot. At HITL 5a, revise it with:
+
 > "Week 5 — Revise: Add 2 specific predictions with evidence. Include one
 > counter-intuitive insight. Start with 'By 2027...' and ground it in current
 > trends the audience already sees."
@@ -418,18 +424,17 @@ Week 5 (Vision) is the consistently weak spot. At HITL 5a, revise it with:
 ### "The roadmap doesn't fit my topic"
 
 After Skill 2, request adjustments:
+
 > "Week 3 should focus on [specific subtopic]. Week 5 should emphasize [specific
-> future trend] rather than general AI adoption."
+> > future trend] rather than general AI adoption."
 
 ### "The MCP server isn't loading"
 
 Use the direct API instead (Option B2). This works without MCP:
 
 ```javascript
-
 // Post directly via LinkedIn API — see Skill 8 for full Node.js snippet
 // Status 201 = success. Response includes post URN for your publishing log.
-
 ```
 
 ### "I want to change the tone mid-series"
@@ -459,14 +464,14 @@ Preview" → right-click → Print → Save as PDF.
 
 Recommended cadence for the 6-week series:
 
-| Week | Timing | Best Days | Best Time |
-| ------ | -------- | ----------- | ----------- |
-| 1 | Week 0 | Tuesday | 8-10am local |
-| 2 | +7 days | Thursday | 8-10am local |
-| 3 | +14 days | Tuesday | 8-10am local |
-| 4 | +21 days | Thursday | 8-10am local |
-| 5 | +28 days | Tuesday | 8-10am local |
-| 6 | +35 days | Thursday | 8-10am local |
+| Week | Timing   | Best Days | Best Time    |
+| ---- | -------- | --------- | ------------ |
+| 1    | Week 0   | Tuesday   | 8-10am local |
+| 2    | +7 days  | Thursday  | 8-10am local |
+| 3    | +14 days | Tuesday   | 8-10am local |
+| 4    | +21 days | Thursday  | 8-10am local |
+| 5    | +28 days | Tuesday   | 8-10am local |
+| 6    | +35 days | Thursday  | 8-10am local |
 
 After each post, track impressions, reactions, and comments at 24 and 48 hours.
 This engagement data will tell you which weeks of the arc resonate most with

@@ -58,13 +58,11 @@ Which do you prefer? (A / B1 / B2)
 
 1. **Copy post text** and present it in a clean block.
 2. **Attach visual**:
-
    - Open `diagrams/weekX_*.html` in a browser.
    - Screenshot the full page.
    - Save as PNG and attach to the post.
 
 3. **Post on LinkedIn**:
-
    - Go to `linkedin.com`.
    - Click **Start a post**.
    - Paste text, attach screenshot, click **Post**.
@@ -110,11 +108,11 @@ OAuth flow (one-time):
 1. Start local callback server:
 
 ```javascript
-const http = require('http');
+const http = require("http");
 http
   .createServer((req, res) => {
     console.log(req.url);
-    res.end('OK');
+    res.end("OK");
   })
   .listen(3000);
 ```
@@ -146,32 +144,32 @@ Prerequisites:
 Post via Node.js:
 
 ```javascript
-const https = require('https');
+const https = require("https");
 const body = JSON.stringify({
-  author: 'urn:li:person:<PERSON_ID>',
-  lifecycleState: 'PUBLISHED',
+  author: "urn:li:person:<PERSON_ID>",
+  lifecycleState: "PUBLISHED",
   specificContent: {
-    'com.linkedin.ugc.ShareContent': {
-      shareCommentary: { text: '<POST_TEXT>' },
-      shareMediaCategory: 'NONE'
-    }
+    "com.linkedin.ugc.ShareContent": {
+      shareCommentary: { text: "<POST_TEXT>" },
+      shareMediaCategory: "NONE",
+    },
   },
   visibility: {
-    'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC'
-  }
+    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC",
+  },
 });
 
 const options = {
-  hostname: 'api.linkedin.com',
-  path: '/v2/ugcPosts',
-  method: 'POST',
+  hostname: "api.linkedin.com",
+  path: "/v2/ugcPosts",
+  method: "POST",
   headers: {
-    Authorization: 'Bearer <ACCESS_TOKEN>',
-    'Content-Type': 'application/json',
-    'Content-Length': Buffer.byteLength(body),
-    'X-Restli-Protocol-Version': '2.0.0',
-    'LinkedIn-Version': '202510'
-  }
+    Authorization: "Bearer <ACCESS_TOKEN>",
+    "Content-Type": "application/json",
+    "Content-Length": Buffer.byteLength(body),
+    "X-Restli-Protocol-Version": "2.0.0",
+    "LinkedIn-Version": "202510",
+  },
 };
 
 // Status 201 = success. Response includes post URN.

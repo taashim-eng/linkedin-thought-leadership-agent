@@ -5,11 +5,13 @@ This guide provides portable setup and run instructions for the **LinkedIn Thoug
 ## 1) Prerequisites
 
 ### Required
+
 - Git
 - A markdown-capable AI coding/chat environment that supports skill files
 - Node.js 18+ and npm (recommended for optional PDF export and link checks)
 
 ### Optional
+
 - `md-to-pdf` for archive PDF generation
 - LinkedIn MCP integration for automated posting
 
@@ -40,6 +42,7 @@ Start a new session in your AI assistant and provide an initial prompt such as:
 > "I want to create a LinkedIn thought leadership series about [TOPIC]."
 
 The orchestrator should progress through:
+
 1. Intent Discovery
 2. Content Strategy
 3. Draft Generation
