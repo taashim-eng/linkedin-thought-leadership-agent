@@ -41,17 +41,17 @@ The system follows **Path A** (Agentic Skills Pack) with **9 specialized skills*
 
 ### Skills Summary
 
-| # | Skill | Purpose |
-|---|-------|---------|
-| 0 | Master Orchestrator | Pipeline control, state management, error recovery |
-| 1 | Intent Discovery | 5-question interview to extract strategic intent |
-| 2 | Content Strategist | 6-week narrative arc with Hook→Framework→Story→Tactics→Vision→CTA structure |
-| 3 | Draft Architect | First drafts with anti-AI-ism rules (no "In today's...", no "Let's dive in...") |
-| 4 | Voice & Tone Refiner | Detects and replaces 15+ AI patterns with human voice |
-| 5 | Engagement Optimizer | LinkedIn-specific optimization (hooks, CTAs, hashtags, visuals) + HITL 5a |
-| 6 | Quality Reviewer | 5-metric scoring rubric (1-5 scale) + HITL 6a benchmark gate |
-| 7 | Archive Manager | Structured archival with full metadata for reproducibility |
-| 8 | Poster & Reviewer | LiGo MCP integration for automated LinkedIn posting |
+| #   | Skill                | Purpose                                                                         |
+| --- | -------------------- | ------------------------------------------------------------------------------- |
+| 0   | Master Orchestrator  | Pipeline control, state management, error recovery                              |
+| 1   | Intent Discovery     | 5-question interview to extract strategic intent                                |
+| 2   | Content Strategist   | 6-week narrative arc with Hook→Framework→Story→Tactics→Vision→CTA structure     |
+| 3   | Draft Architect      | First drafts with anti-AI-ism rules (no "In today's...", no "Let's dive in...") |
+| 4   | Voice & Tone Refiner | Detects and replaces 15+ AI patterns with human voice                           |
+| 5   | Engagement Optimizer | LinkedIn-specific optimization (hooks, CTAs, hashtags, visuals) + HITL 5a       |
+| 6   | Quality Reviewer     | 5-metric scoring rubric (1-5 scale) + HITL 6a benchmark gate                    |
+| 7   | Archive Manager      | Structured archival with full metadata for reproducibility                      |
+| 8   | Poster & Reviewer    | LiGo MCP integration for automated LinkedIn posting                             |
 
 ## Key Design Decisions
 
@@ -62,13 +62,13 @@ The system follows **Path A** (Agentic Skills Pack) with **9 specialized skills*
 
 ## Benchmark Results
 
-| Test Case | Actionability | Voice | Depth | Cohesion | LinkedIn | **Overall** |
-|-----------|:---:|:---:|:---:|:---:|:---:|:---:|
-| SQL Performance (Agentic) | 4.2 | 4.7 | 4.3 | 4.8 | 4.3 | **4.5** |
-| Data Cleanliness (Agentic) | 4.2 | 4.2 | 4.0 | 4.5 | 4.0 | **4.2** |
-| WAL Protocol (Edge Case) | 3.5 | 2.5 | 4.0 | 3.8 | 3.2 | **3.4** |
-| Vague Input (Ambiguous) | 3.5 | 3.8 | 3.2 | 4.0 | 3.5 | **3.6** |
-| **Single-Prompt Baseline** | **2.5** | **2.2** | **1.8** | **1.0** | **2.5** | **2.0** |
+| Test Case                  | Actionability |  Voice  |  Depth  | Cohesion | LinkedIn | **Overall** |
+| -------------------------- | :-----------: | :-----: | :-----: | :------: | :------: | :---------: |
+| SQL Performance (Agentic)  |      4.2      |   4.7   |   4.3   |   4.8    |   4.3    |   **4.5**   |
+| Data Cleanliness (Agentic) |      4.2      |   4.2   |   4.0   |   4.5    |   4.0    |   **4.2**   |
+| WAL Protocol (Edge Case)   |      3.5      |   2.5   |   4.0   |   3.8    |   3.2    |   **3.4**   |
+| Vague Input (Ambiguous)    |      3.5      |   3.8   |   3.2   |   4.0    |   3.5    |   **3.6**   |
+| **Single-Prompt Baseline** |    **2.5**    | **2.2** | **1.8** | **1.0**  | **2.5**  |   **2.0**   |
 
 **Key finding**: The agentic system outperformed the single-prompt baseline by **+2.5 points** on the primary test case (4.5 vs 2.0). Biggest improvement was in Narrative Cohesion (+3.8), which a single prompt fundamentally cannot achieve.
 
@@ -78,6 +78,9 @@ See [`benchmark/BENCHMARK_APPENDIX.md`](benchmark/BENCHMARK_APPENDIX.md) for ful
 
 ```
 ├── README.md                          # This file
+├── SETUP.md                           # Portable setup and run instructions
+├── EVALUATION_PROTOCOL.md             # Standardized rubric and rater workflow
+├── CONTRIBUTING.md                    # Contribution and documentation conventions
 ├── TUTORIAL_WRITEUP.md                # Full tutorial (assignment submission)
 ├── skills/
 │   ├── skill_0_master_orchestrator.md # Pipeline orchestration
@@ -102,6 +105,7 @@ See [`benchmark/BENCHMARK_APPENDIX.md`](benchmark/BENCHMARK_APPENDIX.md) for ful
 ## How to Use
 
 ### Prerequisites
+
 - Claude Code (or any Claude-based IDE with skill file support)
 - Optional: [LiGo MCP](https://github.com/adhikasp/mcp-linkedin) for automated LinkedIn posting
 
@@ -109,7 +113,7 @@ See [`benchmark/BENCHMARK_APPENDIX.md`](benchmark/BENCHMARK_APPENDIX.md) for ful
 
 1. Clone this repository
 2. Copy the `skills/` directory to your Claude Code skills folder (`~/.claude/skills/`)
-3. Start a conversation and say: *"I want to create a LinkedIn thought leadership series about [your topic]"*
+3. Start a conversation and say: _"I want to create a LinkedIn thought leadership series about [your topic]"_
 4. The orchestrator will guide you through:
    - **Intent Discovery** — 5-question interview to clarify your topic, audience, and message
    - **Content Strategy** — A 6-week narrative arc tailored to your intent

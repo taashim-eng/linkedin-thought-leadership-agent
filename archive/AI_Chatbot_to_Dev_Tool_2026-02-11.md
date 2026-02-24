@@ -1,9 +1,11 @@
 # IT Moving from AI Chatbot to Dev Tool — LinkedIn Thought Leadership Series
-**Created**: 2026-02-11  |  **Quarter**: Q1 2026  |  **Status**: Approved
+
+**Created**: 2026-02-11 | **Quarter**: Q1 2026 | **Status**: Approved
 
 ---
 
 ## Strategic Intent
+
 - **Topic**: IT Moving from AI as a Search Chatbot to a Dev Tool
 - **Audience**: IT Professionals and Leadership Teams
 - **Core Message**: AI is now usable for everyday dev tasks, not just as a chatbot that answers questions
@@ -15,14 +17,14 @@
 
 ## 6-Week Roadmap
 
-| Week | Arc | Title | Objective |
-|------|-----|-------|-----------|
-| 1 | Hook | "Your Team Is Using AI Wrong" | Surface the pain: most teams reduced AI to a search bar |
-| 2 | Framework | "The AI Maturity Ladder" | 3-level mental model: Chat → Copilot → Partner |
-| 3 | Story | "How AI Fixed Our Testing Problem" | Personal war story about AI-embedded testing |
-| 4 | Tactics | "5 Ways to Move from Chat to IDE" | Concrete playbook for team transition |
-| 5 | Vision | "The AI-Native Dev Team of 2027" | Future state and competitive divide |
-| 6 | Call | "Stop Asking. Start Building." | Synthesize series + final CTA |
+| Week | Arc       | Title                              | Objective                                               |
+| ---- | --------- | ---------------------------------- | ------------------------------------------------------- |
+| 1    | Hook      | "Your Team Is Using AI Wrong"      | Surface the pain: most teams reduced AI to a search bar |
+| 2    | Framework | "The AI Maturity Ladder"           | 3-level mental model: Chat → Copilot → Partner          |
+| 3    | Story     | "How AI Fixed Our Testing Problem" | Personal war story about AI-embedded testing            |
+| 4    | Tactics   | "5 Ways to Move from Chat to IDE"  | Concrete playbook for team transition                   |
+| 5    | Vision    | "The AI-Native Dev Team of 2027"   | Future state and competitive divide                     |
+| 6    | Call      | "Stop Asking. Start Building."     | Synthesize series + final CTA                           |
 
 ---
 
@@ -36,7 +38,7 @@ Your developers are using ChatGPT to Google things faster. Your managers are usi
 
 Here's the uncomfortable truth: if your team's primary use of AI is "ask it a question and read the answer," you haven't adopted AI. You've adopted a search engine with better grammar.
 
-The gap between teams that use AI to *ask questions* and teams that use AI to *write, test, and ship code* is widening every quarter. One group is getting incrementally faster at finding answers. The other is fundamentally changing how software gets built.
+The gap between teams that use AI to _ask questions_ and teams that use AI to _write, test, and ship code_ is widening every quarter. One group is getting incrementally faster at finding answers. The other is fundamentally changing how software gets built.
 
 I've watched this play out across multiple teams. The ones still treating AI as a chatbot aren't falling behind slowly — they're standing still while the ground moves under them.
 
@@ -44,7 +46,7 @@ The question isn't whether your team uses AI. It's whether they use it for anyth
 
 **Insight**: AI adoption isn't a binary. Most teams are stuck at Level 1 — and they don't even know there are levels.
 
-**CTA**: Ask your developers one question this week: "What did AI help you *build* last sprint?" If the answer is "nothing" — that's your signal.
+**CTA**: Ask your developers one question this week: "What did AI help you _build_ last sprint?" If the answer is "nothing" — that's your signal.
 
 #AIinIT #SoftwareDevelopment #DevProductivity #AIAdoption #AIDevPartner
 
@@ -97,7 +99,7 @@ Instead of asking AI "how do I write a test for this function," we embedded it i
 
 The shift was immediate. Testing stopped being a phase that happens after development. It became part of development. Every commit, every PR, every merge — tested. Not because someone remembered to run the suite, but because AI made it automatic.
 
-The developers who hated testing? They stopped hating it. Because they weren't doing it anymore. They were *reviewing* it.
+The developers who hated testing? They stopped hating it. Because they weren't doing it anymore. They were _reviewing_ it.
 
 **Insight**: AI didn't replace our testers. It replaced the reason developers avoided testing — the tedium.
 
@@ -187,6 +189,7 @@ Here's what we've covered:
 The common thread: **this isn't about the technology.** Every team has access to the same tools. The difference is whether leadership creates the space to use them differently.
 
 You don't need a 6-month AI transformation roadmap. You need:
+
 - One IDE with AI built in
 - One safe repo to experiment in
 - One sprint where trying something new is celebrated, not questioned
@@ -207,15 +210,15 @@ Follow me for more on building AI-native teams and rethinking how IT delivers va
 
 ## Benchmark Results
 
-| Post | Actionability | Voice | Depth | Cohesion | LinkedIn | **Avg** |
-|------|:---:|:---:|:---:|:---:|:---:|:---:|
-| Week 1 | 4 | 5 | 4 | 5 | 5 | **4.6** |
-| Week 2 | 4 | 5 | 5 | 5 | 5 | **4.8** |
-| Week 3 | 5 | 5 | 5 | 5 | 4 | **4.8** |
-| Week 4 | 5 | 4 | 4 | 4 | 5 | **4.4** |
-| Week 5 | 3 | 4 | 4 | 5 | 4 | **4.0** |
-| Week 6 | 4 | 5 | 4 | 5 | 5 | **4.6** |
-| **Average** | **4.2** | **4.7** | **4.3** | **4.8** | **4.7** | **4.5** |
+| Post        | Actionability |  Voice  |  Depth  | Cohesion | LinkedIn | **Avg** |
+| ----------- | :-----------: | :-----: | :-----: | :------: | :------: | :-----: |
+| Week 1      |       4       |    5    |    4    |    5     |    5     | **4.6** |
+| Week 2      |       4       |    5    |    5    |    5     |    5     | **4.8** |
+| Week 3      |       5       |    5    |    5    |    5     |    4     | **4.8** |
+| Week 4      |       5       |    4    |    4    |    4     |    5     | **4.4** |
+| Week 5      |       3       |    4    |    4    |    5     |    4     | **4.0** |
+| Week 6      |       4       |    5    |    4    |    5     |    5     | **4.6** |
+| **Average** |    **4.2**    | **4.7** | **4.3** | **4.8**  | **4.7**  | **4.5** |
 
 **Weakest Post**: Week 5 (4.0) — Vision post has softer actionability
 **Strongest Posts**: Week 2 & 3 (4.8) — Framework and personal anecdote
@@ -223,10 +226,12 @@ Follow me for more on building AI-native teams and rethinking how IT delivers va
 ---
 
 ## User Feedback Log
+
 - **HITL 5a**: All 6 posts approved without revisions.
 - **HITL 6a**: Benchmark results approved. No posts flagged (all above 3.0).
 
 ## Metadata
+
 - **Skills Used**: 0-8 (full pipeline)
 - **LLM Platform**: Claude Opus 4.6 (via Claude Code)
 - **Total Iterations**: 1 (no revision cycles required)
